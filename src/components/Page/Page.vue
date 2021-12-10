@@ -60,7 +60,7 @@
 
 <script>
 import './page.css';
-import MyHeader from './Header.vue';
+import MyHeader from '../Head/Header.vue';
 
 export default {
   name: 'my-page',
