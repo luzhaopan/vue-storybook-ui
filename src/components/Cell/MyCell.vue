@@ -1,10 +1,10 @@
 <template>
   <div class="pro-container">
-    <!-- <el-button type="primary">主要按钮</el-button>
+    <el-button type="primary">主要按钮</el-button>
     <el-row class="main">
       <el-col :span="4">当前生产数量：19</el-col>
       <el-col :span="20">生产追溯</el-col>
-    </el-row> -->
+    </el-row>
     <div
       v-for="item in proInfo"
       :key="item.taskId"
