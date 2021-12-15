@@ -4,6 +4,7 @@
   "private": true,
   "description": "vue开发项目的一些定制化组件收集，通过storybook构建组件库",
   "scripts": {
+    "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -11,6 +12,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "echarts": "^5.2.2",
     "element-ui": "^2.15.6",
