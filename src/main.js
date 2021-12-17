@@ -5,6 +5,9 @@ import "element-ui/lib/theme-chalk/index.css";
 import locale from "element-ui/lib/locale/lang/en"; // lang i18n
 import router from "./router";
 
+import * as echarts from "echarts";
+Vue.prototype.$echarts = echarts;
+
 Vue.use(ElementUI, { locale });
 Vue.config.productionTip = false;
 
