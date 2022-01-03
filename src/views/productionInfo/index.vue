@@ -1,66 +1,30 @@
 <template>
-  <div class="pro-container">
-    <el-row class="main">
-      <el-col :span="4">当前生产数量：19</el-col>
-      <el-col class="title" :span="20">生产追溯</el-col>
-    </el-row>
-    <div
-      v-for="item in proInfo"
-      :key="item.taskId"
-      style="margin: 5px"
-      class="list"
-    >
-      <div class="list-item" style="margin-right: 5px">
-        <div class="task">
-          <div class="taskNo">{{ item.taskNo }}</div>
-          <div class="taskId">{{ item.taskId }}</div>
-        </div>
-        <div class="time">{{ item.taskTime ? item.taskTime : "--" }}</div>
-      </div>
-      <div class="list-item" v-for="(p, index) in item.children" :key="p.eqId">
-        <div class="eq-card">
-          <div style="width: 100%">
-            <div
-              :class="{
-                items: true,
-                active: p.startTime && !p.endTime,
-                end: p.startTime && p.endTime,
-                nowork: !p.startTime && !p.endTime,
-              }"
-            >
-              <div class="eName">{{ p.eqName }}</div>
-              <div class="ctext" style="margin: 5px 0">
-                开始：{{ p.startTime ? p.startTime : "--" }}
-              </div>
-              <div class="ctext">结束：{{ p.endTime ? p.endTime : "--" }}</div>
-            </div>
-            <div class="time">{{ p.endTime ? "43分22秒" : "" }}</div>
-          </div>
-          <div class="arrow" v-if="index !== 5">
-            <i class="el-icon-right"></i>
-          </div>
-        </div>
-      </div>
+  <div class="main-container">
+    <div>
+      <img class="img" src="@/assets/lg.jpg" alt="" />
     </div>
+    <div class="title">二米活塞杆一号岛生产实况</div>
+    <Production :pro-data="proInfo" />
   </div>
 </template>
 
 <script>
+import Production from "@/components/ProductionInfo";
 export default {
-  name: "ProductionInfo",
-  components: {},
+  name: "ProductInfo",
+  components: { Production },
   data() {
     return {
       proInfo: [
         {
-          taskNo: "1018621886235673600",
-          taskId: "201821J1838CG",
+          taskNo: "880000178611",
+          taskId: "SANY-03-JAN-22 11:31 4579",
           taskTime: null,
           children: [
             {
               eqName: "机床1加工",
               eqId: "32323",
-              startTime: "2021-11-10 09:10:51",
+              startTime: null,
               endTime: null,
             },
             {
@@ -87,29 +51,23 @@ export default {
               startTime: null,
               endTime: null,
             },
-            {
-              eqName: "小车",
-              eqId: "3000044",
-              startTime: null,
-              endTime: null,
-            },
           ],
         },
         {
-          taskNo: "1018621886235666600",
-          taskId: "201921J1838CG",
+          taskNo: "880000178611",
+          taskId: "SANY-03-JAN-22 11:15 4578",
           taskTime: "43分3秒",
           children: [
             {
               eqName: "机床1加工",
               eqId: "3231",
-              startTime: "2021-11-10 09:10:51",
-              endTime: "2021-11-10 09:20:51",
+              startTime: "09:10:51",
+              endTime: "09:20:51",
             },
             {
               eqName: "机床2加工",
               eqId: "323523",
-              startTime: "2021-11-10 09:10:51",
+              startTime: null,
               endTime: null,
             },
             {
@@ -130,35 +88,29 @@ export default {
               startTime: null,
               endTime: null,
             },
-            {
-              eqName: "小车",
-              eqId: "300065044",
-              startTime: null,
-              endTime: null,
-            },
           ],
         },
         {
-          taskNo: "1418521886235666600",
-          taskId: "201961J1838CG",
-          taskTime: "55分33秒",
+          taskNo: "880000178611",
+          taskId: "SANY-03-JAN-22 10:33 4576",
+          taskTime: "50分7秒",
           children: [
             {
               eqName: "机床1加工",
               eqId: "32991",
-              startTime: "2021-11-10 09:10:51",
-              endTime: "2021-11-10 09:20:51",
+              startTime: "09:10:51",
+              endTime: "09:20:51",
             },
             {
               eqName: "机床2加工",
               eqId: "3235r23",
-              startTime: "2021-11-10 09:10:51",
-              endTime: "2021-11-10 09:20:51",
+              startTime: "09:10:51",
+              endTime: "09:20:51",
             },
             {
               eqName: "磨床加工",
               eqId: "326213",
-              startTime: "2021-11-10 09:20:51",
+              startTime: "11:14:28",
               endTime: null,
             },
             {
@@ -173,11 +125,153 @@ export default {
               startTime: null,
               endTime: null,
             },
+          ],
+        },
+        {
+          taskNo: "880000178611",
+          taskId: "SANY-03-JAN-22 10:33 4574",
+          taskTime: "56分25秒",
+          children: [
             {
-              eqName: "小车",
-              eqId: "3010065044",
+              eqName: "机床1加工",
+              eqId: "32991",
+              startTime: "10:32:17",
+              endTime: "10:39:02",
+            },
+            {
+              eqName: "机床2加工",
+              eqId: "3235r23",
+              startTime: "10:41:39",
+              endTime: "11:03:55",
+            },
+            {
+              eqName: "磨床加工",
+              eqId: "326213",
+              startTime: "11:14:28",
+              endTime: "11:25:17",
+            },
+            {
+              eqName: "清洗机",
+              eqId: "3217599",
+              startTime: "11:27:17",
+              endTime: "11:28:32",
+            },
+            {
+              eqName: "检测台",
+              eqId: "3891",
+              startTime: "11:28:37",
+              endTime: "11:32:42",
+            },
+          ],
+        },
+        {
+          taskNo: "880000178611",
+          taskId: "SANY-03-JAN-22 10:14 4573",
+          taskTime: "3分28秒",
+          children: [
+            {
+              eqName: "机床1加工",
+              eqId: "3231",
+              startTime: "09:10:51",
+              endTime: "09:20:51",
+            },
+            {
+              eqName: "机床2加工",
+              eqId: "323523",
               startTime: null,
               endTime: null,
+            },
+            {
+              eqName: "磨床加工",
+              eqId: "32623",
+              startTime: null,
+              endTime: null,
+            },
+            {
+              eqName: "清洗机",
+              eqId: "327599",
+              startTime: null,
+              endTime: null,
+            },
+            {
+              eqName: "检测台",
+              eqId: "389",
+              startTime: null,
+              endTime: null,
+            },
+          ],
+        },
+        {
+          taskNo: "880000178611",
+          taskId: "SANY-03-JAN-22 09:25 4570",
+          taskTime: "108分53秒",
+          children: [
+            {
+              eqName: "机床1加工",
+              eqId: "32991",
+              startTime: "09:10:51",
+              endTime: "09:20:51",
+            },
+            {
+              eqName: "机床2加工",
+              eqId: "3235r23",
+              startTime: "09:10:51",
+              endTime: "09:20:51",
+            },
+            {
+              eqName: "磨床加工",
+              eqId: "326213",
+              startTime: "11:14:28",
+              endTime: null,
+            },
+            {
+              eqName: "清洗机",
+              eqId: "3217599",
+              startTime: null,
+              endTime: null,
+            },
+            {
+              eqName: "检测台",
+              eqId: "3891",
+              startTime: null,
+              endTime: null,
+            },
+          ],
+        },
+        {
+          taskNo: "964295693164610560",
+          taskId: "",
+          taskTime: "39分11秒",
+          children: [
+            {
+              eqName: "机床1加工",
+              eqId: "32991",
+              startTime: "10:32:17",
+              endTime: "10:39:02",
+            },
+            {
+              eqName: "机床2加工",
+              eqId: "3235r23",
+              startTime: "10:41:39",
+              endTime: "11:03:55",
+            },
+            {
+              eqName: "磨床加工",
+              eqId: "326213",
+              startTime: "11:14:28",
+              endTime: "11:25:17",
+            },
+            {
+              eqName: "清洗机",
+              eqId: "3217599",
+              startTime: "11:27:17",
+              endTime: "11:28:32",
+            },
+            {
+              eqName: "检测台",
+              eqId: "3891",
+              startTime: "11:28:37",
+              endTime: "11:32:42",
             },
           ],
         },
@@ -188,95 +282,21 @@ export default {
 </script>
 
 <style>
-.pro-container {
-  padding: 10px;
+.main-container {
+  /* padding: 10px; */
   width: 100%;
+  position: relative;
 }
-.main {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  font-size: 14px;
+.img {
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  left: 10px;
 }
 .title {
-  font-size: 16px;
-  font-weight: 600;
-}
-.list {
-  display: flex;
-  flex-wrap: wrap;
-}
-.list-item {
-  flex: 1;
-}
-.eq-card {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  text-align: center;
   width: 100%;
-}
-.task {
-  height: 70px;
-  box-shadow: 5px 5px 10px #e8e8e8;
-  border-radius: 5px;
-  padding: 10px 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 30px;
-}
-.taskNo {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
-}
-.taskId {
-  font-size: 10px;
-  color: rgb(143, 143, 143);
-}
-.card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.items {
-  padding: 10px 5px;
-  text-align: left;
-  border-radius: 5px;
-  color: #fff;
-  height: 70px;
-}
-.eName {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-.ctext {
-  font-size: 8px;
-  white-space: nowrap;
-}
-.arrow {
-  width: 20px;
-  height: 20px;
-  background-color: #044c80;
-  border: 1px solid #000;
-  color: #fff;
-  font-size: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 35px 2px 0;
-}
-.time {
-  font-size: 12px;
-}
-.active {
-  background-color: #0095ff;
-}
-.nowork {
-  background-color: #a1a1a1;
-}
-.end {
-  background-color: #01c067;
 }
 </style>
