@@ -25,12 +25,32 @@
 </template>
 
 <script>
+import { getDataStats } from "@/api/dashboard";
 import BarChart from "@/components/BarChart.vue";
 
 export default {
   name: "EquipmentInfo",
   components: {
     BarChart,
+  },
+  mounted() {
+    console.log("env", process.env.VUE_APP_BASE_API);
+    this.getDataStats();
+  },
+  methods: {
+    getDataStats() {
+      getDataStats({
+        channel: 0,
+        customer_year: 0,
+      })
+        .then((res) => {
+          if (res.code === 200) {
+            console.log(res);
+          }
+        })
+        .catch(() => {})
+        .finally(() => {});
+    },
   },
 };
 </script>

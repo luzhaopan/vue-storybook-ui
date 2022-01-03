@@ -156,7 +156,7 @@ export default {
                 fontSize: 12,
               },
               formatter: function (data) {
-                console.log("dd", data);
+                // console.log("dd", data);
                 const t =
                   data.dataIndex === 0 ||
                   data.dataIndex === 10 ||
