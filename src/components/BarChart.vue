@@ -60,17 +60,56 @@ export default {
       this.chart = echarts.init(this.$el, "macarons");
       this.setOptions(this.chartData);
     },
+    // const data1 = {
+    //   '机器1':[
+    //     {
+    //         equipmentId: '机器1',
+    //         equipmentStatus: 0,
+    //         acqDateStart: "2022-01-04 08:12:41",
+    //         ts: "2022-01-04 08:12:41",
+    //         acqDateEnd: "2022-01-04 08:12:41",
+    //         id: "2b730a51-9ab3-43ee-ba94-e29e2cfb21421"
+    //     },
+    //     {
+    //         equipmentId: '机器1',
+    //         equipmentStatus: 0,
+    //         acqDateStart: "2022-01-04 08:12:42",
+    //         ts: "2022-01-04 08:12:42",
+    //         acqDateEnd: "2022-01-04 08:12:42",
+    //         id: "2b730a51-9ab3-43ee-ba94-e29e2cfb2141"
+    //     }
+    //   ],
+    //   '机器2': [
+    //       {
+    //         equipmentId: '机器2',
+    //         equipmentStatus: 0,
+    //         acqDateStart: "2022-01-04 08:12:42",
+    //         ts: "2022-01-04 08:12:42",
+    //         acqDateEnd: "2022-01-04 08:12:42",
+    //         id: "2b730a51-9ab3-43ee-ba94-e239e2cfb2141"
+    //       },
+    //       {
+    //         equipmentId: '机器2',
+    //         equipmentStatus: 0,
+    //         acqDateStart: "2022-01-04 08:12:43",
+    //         ts: "2022-01-04 08:12:43",
+    //         acqDateEnd: "2022-01-04 08:12:43",
+    //         id: "2b730a51-9ab3-43ee-b32a94-e29e2cfb2141"
+    //       }
+    //   ]
+    // },
     setOptions() {
       var data = [];
-      var dataCount = 10;
+      var dataCount = 2;
       // 1638100800000
-      var startTime = +new Date(1638100800000);
+      console.log(moment("2022-01-04 08:12:41"));
+      var startTime = +new Date();
       var categories = ["机器人", "车床1", "车床2", "磨床"];
       var types = [
-        { name: "作业", color: "green" },
-        { name: "待机", color: "yellow" },
-        { name: "故障", color: "red" },
-        { name: "关机", color: "#d8d4d4" },
+        { name: "作业", color: "green", equipmentStatus: 1 },
+        { name: "待机", color: "yellow", equipmentStatus: 2 },
+        { name: "故障", color: "red", equipmentStatus: -1 },
+        { name: "关机", color: "#d8d4d4", equipmentStatus: 0 },
       ];
       categories.forEach(function (category, index) {
         var baseTime = startTime;
@@ -89,6 +128,7 @@ export default {
           baseTime += 1000;
         }
       });
+      console.log(data);
       function renderItem(params, api) {
         var categoryIndex = api.value(0);
         var start = api.coord([api.value(1), categoryIndex]);

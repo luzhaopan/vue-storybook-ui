@@ -1,8 +1,8 @@
 import request from "@/utils/request";
 
-export function getDataStats(params) {
+export function getDateTime(params) {
   return request({
-    url: "/dashboard/data_stats",
+    url: "/sany_equipmentstatuss/GetDateTime",
     method: "get",
     params,
   });

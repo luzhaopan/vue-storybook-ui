@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { getDataStats } from "@/api/dashboard";
+import { getDateTime } from "@/api/dashboard";
 import BarChart from "@/components/BarChart.vue";
 
 export default {
@@ -34,18 +34,16 @@ export default {
     BarChart,
   },
   mounted() {
-    console.log("env", process.env.VUE_APP_BASE_API);
-    this.getDataStats();
+    this.getDateTime();
   },
   methods: {
-    getDataStats() {
-      getDataStats({
-        channel: 0,
-        customer_year: 0,
+    getDateTime() {
+      getDateTime({
+        dt: "2021-12-04 08:47:00",
       })
         .then((res) => {
-          if (res.code === 200) {
-            console.log(res);
+          if (res.status === 200) {
+            console.log(res.data);
           }
         })
         .catch(() => {})

@@ -1,5 +1,5 @@
 "use strict";
-const baseUrl = "http://115.28.185.117:10033";
+const baseUrl = "http://127.0.0.1:6001";
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -32,9 +32,9 @@ module.exports = {
     },
     // before: require('./mock/mock-server.js'),
     proxy: {
-      "/dev-api": {
+      "/api": {
         target: baseUrl,
-        pathRewrite: { "^/dev-api": "/api" },
+        pathRewrite: { "^/api": "/api" },
         changeOrigin: true,
       },
     },

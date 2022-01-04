@@ -1,18 +1,16 @@
 <template>
   <div class="main-container">
-    <div>
-      <img class="img" src="@/assets/lg.jpg" alt="" />
-    </div>
-    <div class="title">二米活塞杆一号岛生产实况</div>
+    <Header title="二米活塞杆一号岛生产实况" />
     <Production :pro-data="proInfo" />
   </div>
 </template>
 
 <script>
+import Header from "@/components/Header";
 import Production from "@/components/ProductionInfo";
 export default {
   name: "ProductInfo",
-  components: { Production },
+  components: { Header, Production },
   data() {
     return {
       proInfo: [
