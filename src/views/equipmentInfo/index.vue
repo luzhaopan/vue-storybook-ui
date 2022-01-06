@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div style="width: 80%">
-      <BarChart />
+      <BarChart chart-id="equipmentTask" :chart-data="equipmentTask" />
     </div>
     <div style="margin-top: 130px; width: 20%">
       <div class="leng">
@@ -25,25 +25,36 @@
 </template>
 
 <script>
-import { getDateTime } from "@/api/dashboard";
-import BarChart from "@/components/BarChart.vue";
+import { getStatus } from "@/api/dashboard";
+import BarChart from "@/components/BarChart3.vue";
 
 export default {
   name: "EquipmentInfo",
   components: {
     BarChart,
   },
+  data() {
+    return {
+      equipmentTask: {},
+      timer: null,
+    };
+  },
   mounted() {
-    this.getDateTime();
+    const n = 1; // 间隔每n秒请求一次数据
+    const time = n * 1000;
+    this.timer = setInterval(() => {
+      this.getStatus();
+    }, time);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
-    getDateTime() {
-      getDateTime({
-        dt: "2021-12-04 08:47:00",
-      })
+    getStatus() {
+      getStatus()
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data);
+            this.equipmentTask = res.data.result;
           }
         })
         .catch(() => {})

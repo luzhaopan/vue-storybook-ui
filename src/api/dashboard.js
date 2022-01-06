@@ -7,3 +7,11 @@ export function getDateTime(params) {
     params,
   });
 }
+
+export function getStatus(params) {
+  return request({
+    url: "/sany_equipmentstatuss/GetStatus",
+    method: "get",
+    params,
+  });
+}
