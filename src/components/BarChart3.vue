@@ -31,12 +31,14 @@ export default {
     },
     height: {
       type: String,
-      default: "450px",
+      default: "100%",
     },
   },
   data() {
     return {
       chart: null,
+      eqId: [],
+      eqArr: [],
     };
   },
   watch: {
@@ -64,40 +66,7 @@ export default {
       this.chart = echarts.init(this.$el, "macarons");
       this.setOptions(this.chartData);
     },
-    setOptions() {
-      var types1 = {
-        1: { name: "作业", color: "green", equipmentStatus: 1 },
-        2: { name: "待机", color: "yellow", equipmentStatus: 2 },
-        3: { name: "故障", color: "red", equipmentStatus: 3 },
-        0: { name: "关机", color: "#d8d4d4", equipmentStatus: 0 },
-      };
-      const eqId = [];
-      const eqArr = [];
-      const { equipmentTask = [] } = this.chartData;
-      const time =
-        equipmentTask.length &&
-        equipmentTask[0].equipmentList.length &&
-        equipmentTask[0].equipmentList[0].acqDateStart;
-      // console.log("time", time); //2022-01-05 14:35:00
-      let startTime1 = +new Date(time);
-      equipmentTask.forEach((item, index) => {
-        let baseTime = startTime1;
-        eqId.push(item.equipmentId);
-        item.equipmentList.forEach((obj) => {
-          // const start = +new Date(obj.acqDateStart);
-          // const end = +new Date(obj.acqDateEnd);
-          var duration = 1000;
-          eqArr.push({
-            name: types1[obj.equipmentStatus].name,
-            // name: "",
-            value: [index, baseTime, (baseTime += duration), duration],
-            itemStyle: {
-              color: types1[obj.equipmentStatus].color,
-            },
-          });
-          baseTime += 1000;
-        });
-      });
+    setOptions({ seriesData = [], yData = [] }) {
       function renderItem(params, api) {
         var categoryIndex = api.value(0);
         var start = api.coord([api.value(1), categoryIndex]);
@@ -134,7 +103,7 @@ export default {
               params.marker +
               params.name +
               ": " +
-              moment(params.value[2]).format("YYYY-MM-DD h:mm")
+              moment(params.value[1]).format("YYYY-MM-DD HH:mm:ss")
             );
           },
         },
@@ -142,22 +111,24 @@ export default {
           text: "设备用时分析",
           left: "center",
         },
-        grid: {
-          height: 300,
-        },
+        // grid: {
+        //   height: 300,
+        // },
         xAxis: {
           scale: true,
           axisLabel: {
+            interval: 0,
+            // rotate: 20,
             formatter: function (val, index) {
-              // console.log("333", val);
-              let a = moment(val + index * 3600000).format("YYYY-MM-DD h:mm");
-              // let a1 = moment(val + 3600000).format("YYYY-MM-DD h:mm");
+              let a = moment(val + index * 3600000).format(
+                "YYYY-MM-DD HH:mm:ss"
+              );
               return a;
             },
           },
         },
         yAxis: {
-          data: eqId,
+          data: yData,
         },
         series: [
           {
@@ -188,7 +159,7 @@ export default {
               x: [1, 2],
               y: 0,
             },
-            data: eqArr,
+            data: seriesData,
           },
         ],
       });
