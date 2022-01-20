@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div>
-      <img class="img" src="@/assets/lg.jpg" alt="" />
+      <img class="img" src="@/assets/sany.png" alt="" />
     </div>
     <div class="title">{{ title }}</div>
   </div>
@@ -19,10 +19,11 @@ export default {
 <style scoped>
 .header {
   position: relative;
+  padding: 10px 20px;
 }
 .img {
-  width: 100px;
-  height: 30px;
+  width: 85px;
+  height: 20px;
   position: absolute;
   left: 10px;
 }
