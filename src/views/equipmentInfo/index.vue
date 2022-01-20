@@ -93,22 +93,22 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scope>
 .main-container {
   width: 100%;
   height: calc(100vh - 80px);
   /* height: 100vh; */
   /* padding: 10px; */
-}
-.detail {
-  border: 1px solid #ddd;
-  height: 100%;
-  padding: 5px 10px 20px;
-  background-color: #f8f8f8;
-}
-.sub-title {
-  margin: 5px 0;
-  font-size: 13px;
-  font-weight: 600;
+  .detail {
+    border: 1px solid #ddd;
+    height: 100%;
+    padding: 5px 10px 20px;
+    background-color: #f8f8f8;
+  }
+  .sub-title {
+    margin: 5px 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
 }
 </style>
