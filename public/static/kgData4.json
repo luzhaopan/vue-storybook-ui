@@ -1,0 +1,208 @@
+{
+  "pingan": [
+    {
+      "source": "平安银行",
+      "target": "size",
+      "rela": "factor",
+      "exposure": "1.252425",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "value",
+      "rela": "factor",
+      "exposure": "-1.040566",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "growth",
+      "rela": "factor",
+      "exposure": "-0.250220",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "volatility",
+      "rela": "factor",
+      "exposure": "-0.242229",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "liquidity",
+      "rela": "factor",
+      "exposure": "-0.605975",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "momentum",
+      "rela": "factor",
+      "exposure": "-0.464534",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "quality",
+      "rela": "factor",
+      "exposure": "-0.728449",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "dividend_yield",
+      "rela": "factor",
+      "exposure": "-0.083758",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "sentiment",
+      "rela": "factor",
+      "exposure": "0.298453",
+      "type": "resolved"
+    },
+    {
+      "source": "平安银行",
+      "target": "ind_bank",
+      "rela": "industry",
+      "type": "resolved"
+    }
+  ],
+  "wanke": [
+    {
+      "source": "万科A",
+      "target": "value",
+      "rela": "factor",
+      "exposure": "-0.486685",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "growth",
+      "rela": "factor",
+      "exposure": "0.526883",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "volatility",
+      "rela": "factor",
+      "exposure": "-0.586325",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "liquidity",
+      "rela": "factor",
+      "exposure": "-0.532424",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "momentum",
+      "rela": "factor",
+      "exposure": "0.831446",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "quality",
+      "rela": "factor",
+      "exposure": "0.127489",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "dividend_yield",
+      "rela": "factor",
+      "exposure": "-1.190133",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "sentiment",
+      "rela": "factor",
+      "exposure": "0.331115",
+      "type": "resolved"
+    },
+    {
+      "source": "万科A",
+      "target": "ind_realestate",
+      "rela": "industry",
+      "type": "resolved"
+    }
+  ],
+  "nanbo": [
+    {
+      "source": "南玻A",
+      "target": "size",
+      "rela": "factor",
+      "exposure": "-1.134868",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "value",
+      "rela": "factor",
+      "exposure": "-0.497286",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "growth",
+      "rela": "factor",
+      "exposure": "-0.381898",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "volatility",
+      "rela": "factor",
+      "exposure": "0.430945",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "liquidity",
+      "rela": "factor",
+      "exposure": "-0.565032",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "momentum",
+      "rela": "factor",
+      "exposure": "0.313723",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "quality",
+      "rela": "factor",
+      "exposure": "-0.749714",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "dividend_yield",
+      "rela": "factor",
+      "exposure": "-0.952136",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "sentiment",
+      "rela": "factor",
+      "exposure": "-0.505260",
+      "type": "resolved"
+    },
+    {
+      "source": "南玻A",
+      "target": "ind_constructmaterial",
+      "rela": "industry",
+      "type": "resolved"
+    }
+  ]
+}

@@ -22,6 +22,6 @@ const Template = (args, { argTypes }) => ({
   template: '<word-cloud v-bind="$props" />',
 });
 
-export const MyRing = Template.bind({});
+export const Cloud = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
-MyRing.args = {};
+Cloud.args = {};
