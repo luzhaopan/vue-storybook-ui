@@ -8,6 +8,7 @@ Vue.use(Router);
 import Equipment from "../views/equipmentInfo";
 import Production from "../views/productionInfo";
 import RealProduce from "../views/realProduce";
+import RealProInfo from "../views/realProInfo";
 
 const routes = [
   { path: "", redirect: "equipment" },
@@ -15,6 +16,7 @@ const routes = [
   { path: "/equipment", component: Equipment },
   { path: "/production", component: Production },
   { path: "/realProduce", component: RealProduce },
+  { path: "/realProInfo", component: RealProInfo },
 ];
 
 //实例化VueRouter并将routes添加进去

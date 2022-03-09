@@ -5,10 +5,12 @@ import "element-ui/lib/theme-chalk/index.css";
 import locale from "element-ui/lib/locale/lang/en"; // lang i18n
 import router from "./router";
 import * as echarts from "echarts";
+import moment from "moment";
 
 Vue.use(ElementUI, { locale });
 Vue.config.productionTip = false;
 
+Vue.prototype.$moment = moment;
 Vue.prototype.$echarts = echarts;
 
 new Vue({
