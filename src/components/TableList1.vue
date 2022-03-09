@@ -44,34 +44,37 @@
 export default {
   name: "TableList",
   props: {
-    infoData: Object,
+    tableData: {
+      type: Array,
+      default: () => [],
+    },
   },
   data() {
     return {
-      tableData: [
-        {
-          wipOrderNo: "880000181012",
-          productAlias: "W201B",
-          quantity: 160,
-          okValue: 10,
-          ngValue: 6,
-          serisNullValue: 30,
-          scheduledStartDate: "2022-03-09T02:55:26.272Z",
-          scheduledCompleteDate: "2022-03-09T02:55:26.272Z",
-          prodValue: 0,
-        },
-        {
-          wipOrderNo: "886600011012",
-          productAlias: "W601B",
-          quantity: 60,
-          okValue: 10,
-          ngValue: 6,
-          serisNullValue: 30,
-          scheduledStartDate: "2022-03-09T02:55:26.272Z",
-          scheduledCompleteDate: "2022-03-09T02:55:26.272Z",
-          prodValue: 0,
-        },
-      ],
+      // tableData: [
+      //   {
+      //     wipOrderNo: "880000181012",
+      //     productAlias: "W201B",
+      //     quantity: 160,
+      //     okValue: 10,
+      //     ngValue: 6,
+      //     serisNullValue: 30,
+      //     scheduledStartDate: "2022-03-09T02:55:26.272Z",
+      //     scheduledCompleteDate: "2022-03-09T02:55:26.272Z",
+      //     prodValue: 0,
+      //   },
+      //   {
+      //     wipOrderNo: "886600011012",
+      //     productAlias: "W601B",
+      //     quantity: 60,
+      //     okValue: 10,
+      //     ngValue: 6,
+      //     serisNullValue: 30,
+      //     scheduledStartDate: "2022-03-09T02:55:26.272Z",
+      //     scheduledCompleteDate: "2022-03-09T02:55:26.272Z",
+      //     prodValue: 0,
+      //   },
+      // ],
     };
   },
   methods: {

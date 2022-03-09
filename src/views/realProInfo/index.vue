@@ -4,14 +4,14 @@
     <el-row class="line1" :gutter="10">
       <el-col :span="12">
         <div class="bgs">
-          <div class="title">日产数据(6月)</div>
-          <DailyChart chart-id="dailyChart1" :chart-data="{}" />
+          <div class="title">日产数据</div>
+          <DailyChart chart-id="dailyChart1" :chart-data="days0Data" />
         </div>
       </el-col>
       <el-col :span="12">
         <div class="bgs">
           <div class="title">日产数据(11月)</div>
-          <DailyChart chart-id="dailyChart2" :chart-data="{}" />
+          <DailyChart chart-id="dailyChart2" :chart-data="days1Data" />
         </div>
       </el-col>
     </el-row>
@@ -19,24 +19,25 @@
       <el-col :span="12">
         <div class="bgs">
           <div class="title">月产数据</div>
-          <MonthChart chart-id="monthChart1" :chart-data="{}" />
+          <MonthChart chart-id="monthChart1" :chart-data="months0Data" />
         </div>
       </el-col>
       <el-col :span="12">
         <div class="bgs">
           <div class="title">月产数据</div>
-          <MonthChart chart-id="monthChart2" :chart-data="{}" />
+          <MonthChart chart-id="monthChart2" :chart-data="months1Data" />
         </div>
       </el-col>
     </el-row>
     <el-row class="line1" :gutter="10">
-      <el-col :span="12"><TableList /></el-col>
-      <el-col :span="12"><TableList /></el-col>
+      <el-col :span="12"><TableList :table-data="table0Data" /></el-col>
+      <el-col :span="12"><TableList :table-data="table1Data" /></el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import { getDaysData, getMonthsData, getTable } from "@/api/dashboard";
 import Header from "@/components/Header";
 import DailyChart from "@/components/DailyChart";
 import MonthChart from "@/components/MonthChart";
@@ -50,54 +51,162 @@ export default {
     MonthChart,
     TableList,
   },
+  mounted() {
+    this.getData();
+    // const n = 30; // 间隔每n秒请求一次数据
+    // const time = n * 1000;
+    // this.timer = setInterval(() => {
+    //   this.getData();
+    // }, time);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
+  },
   data() {
     return {
-      infoData1: {
-        name: "M-900iB/280L实时信息",
-        x: -1365.47,
-        y: -1365.47,
-        z: -1365.47,
-        status: "联机",
-        pattern: "自动",
-        runStatus: "生产",
-        speed: "100%",
-        time: "20h 31min 23s",
-        total: "19/2021",
+      days0Data: {
+        seriesData: [],
+        xAxisData: [],
       },
-      infoData2: {
-        name: "OP10车床实时信息",
-        x: -1365.47,
-        y: -1365.47,
-        status: "联机",
-        pattern: "自动",
-        runStatus: "待机",
-        mspeed: 0,
-        speed: 0,
-        total: "19/2235",
+      days1Data: {
+        seriesData: [],
+        xAxisData: [],
       },
-      infoData3: {
-        name: "OP20车床实时信息",
-        x: -1365.47,
-        y: -1365.47,
-        status: "联机",
-        pattern: "自动",
-        runStatus: "待机",
-        mspeed: 0,
-        speed: 0,
-        total: "19/2235",
+      months0Data: {
+        seriesData: [],
+        xAxisData: [],
       },
-      infoData4: {
-        name: "OP30车床实时信息",
-        x: -1365.47,
-        y: -1365.47,
-        status: "联机",
-        pattern: "自动",
-        runStatus: "待机",
-        mspeed: 0,
-        speed: 0,
-        total: "19/2235",
+      months1Data: {
+        seriesData: [],
+        xAxisData: [],
       },
+      table0Data: [],
+      table1Data: [],
     };
+  },
+  methods: {
+    getData() {
+      this.getDaysData({ workstation: "1820WJ10A0070" });
+      this.getDaysData({ workstation: "1820WJ10A0071" });
+      this.getMonthsData({ workstation: "1820WJ10A0070" });
+      this.getMonthsData({ workstation: "1820WJ10A0071" });
+      this.getTable({ workstation: "1820WJ10A0070" });
+      this.getTable({ workstation: "1820WJ10A0071" });
+    },
+    // 日产数据
+    getDaysData(obj) {
+      getDaysData(obj)
+        .then((res) => {
+          const { status, data } = res;
+          if (status === 200 && data.result) {
+            if (obj.workstation === "1820WJ10A0070") {
+              if (data.result.data) {
+                const name = Object.keys(data.result.data);
+                const arr = [];
+                name.forEach((item) => {
+                  if (item !== "xAxis") {
+                    arr.push({
+                      name: item,
+                      type: "bar",
+                      stack: "Ad",
+                      emphasis: {
+                        focus: "series",
+                      },
+                      data: data.result.data[item],
+                    });
+                  }
+                });
+                this.days0Data.xAxisData = data.result.data["xAxis"];
+                this.days0Data.seriesData = arr;
+              }
+            } else {
+              if (data.result.data) {
+                const name = Object.keys(data.result.data);
+                const arr = [];
+                name.forEach((item) => {
+                  if (item !== "xAxis") {
+                    arr.push({
+                      name: item,
+                      type: "bar",
+                      stack: "Ad",
+                      emphasis: {
+                        focus: "series",
+                      },
+                      data: data.result.data[item],
+                    });
+                  }
+                });
+                this.days1Data.xAxisData = data.result.data["xAxis"];
+                this.days1Data.seriesData = arr;
+              }
+            }
+          }
+        })
+        .catch(() => {})
+        .finally(() => {});
+    },
+    // 月产数据
+    getMonthsData(obj) {
+      getMonthsData(obj)
+        .then((res) => {
+          const { status, data } = res;
+          if (status === 200 && data.result) {
+            if (obj.workstation === "1820WJ10A0070") {
+              if (data.result.data) {
+                const name = Object.keys(data.result.data);
+                const arr = [];
+                name.forEach((item) => {
+                  if (item !== "xAxis") {
+                    arr.push({
+                      name: item,
+                      type: "bar",
+                      barMaxWidth: 20,
+                      data: data.result.data[item],
+                    });
+                  }
+                });
+                this.months0Data.xAxisData = data.result.data["xAxis"];
+                this.months0Data.seriesData = arr;
+              }
+            } else {
+              if (data.result.data) {
+                const name = Object.keys(data.result.data);
+                const arr = [];
+                name.forEach((item) => {
+                  if (item !== "xAxis") {
+                    arr.push({
+                      name: item,
+                      type: "bar",
+                      barMaxWidth: 20,
+                      data: data.result.data[item],
+                    });
+                  }
+                });
+                this.months1Data.xAxisData = data.result.data["xAxis"];
+                this.months1Data.seriesData = arr;
+              }
+            }
+          }
+        })
+        .catch(() => {})
+        .finally(() => {});
+    },
+    // 看板表格数据
+    getTable(obj) {
+      getTable(obj)
+        .then((res) => {
+          const { status, data } = res;
+          if (status === 200 && data.result) {
+            if (obj.workstation === "1820WJ10A0070") {
+              this.table0Data = data.result.tabaleData;
+            } else {
+              this.table1Data = data.result.tabaleData;
+            }
+          }
+        })
+        .catch(() => {})
+        .finally(() => {});
+    },
   },
 };
 </script>

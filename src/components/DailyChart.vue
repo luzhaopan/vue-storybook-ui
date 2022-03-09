@@ -28,7 +28,15 @@ export default {
     },
     height: {
       type: String,
-      default: "250px",
+      default: "200px",
+    },
+  },
+  watch: {
+    chartData: {
+      deep: true,
+      handler(val) {
+        this.updateOption(this.getOption(val));
+      },
     },
   },
   data() {
@@ -40,11 +48,10 @@ export default {
     this.initChart();
   },
   beforeDestroy() {
-    if (!this.chart) {
-      return;
+    if (this.chart) {
+      this.chart.dispose();
+      this.chart = null;
     }
-    this.chart.dispose();
-    this.chart = null;
   },
   methods: {
     initChart() {
@@ -53,10 +60,24 @@ export default {
         "customed"
       );
       const option = this.getOption(this.chartData);
-      this.chart.setOption(option, true);
+      this.updateOption(option);
     },
-    getOption() {
-      // const { seriesData, xAxisData, legendData } = data
+    updateOption(option) {
+      if (this.chartData.seriesData.length === 0) {
+        this.chart.clear();
+        this.chart.showLoading({
+          text: "暂无数据",
+          color: "#fff",
+          textColor: "#909399",
+          fontSize: "14px",
+        });
+      } else {
+        this.chart.hideLoading();
+        this.chart.setOption(option, true);
+      }
+    },
+    getOption(data) {
+      const { seriesData, xAxisData } = data;
       const option = {
         tooltip: {
           trigger: "axis",
@@ -77,7 +98,7 @@ export default {
         xAxis: [
           {
             type: "category",
-            data: [1, 2, 3, 4, 5, 6, 7],
+            data: xAxisData,
           },
         ],
         yAxis: [
@@ -86,67 +107,68 @@ export default {
             name: "产量",
           },
         ],
-        series: [
-          {
-            name: "早班OK",
-            type: "bar",
-            stack: "Ad",
-            barMaxWidth: 20,
-            emphasis: {
-              focus: "series",
-            },
-            markLine: {
-              // 平均线设置
-              silent: true, // true 去掉鼠标悬浮该线上的动画
-              // symbol: 'none', // 该线无样式
-              // label: {
-              //   show: false, // 该线上的值去掉
-              // },
-              lineStyle: {
-                // 设置该线样式
-                normal: {
-                  type: "dashed",
-                  color: "#d9b500",
-                  width: 2,
-                },
-              },
-              data: [
-                {
-                  yAxis: 20, // 线的值
-                  name: "target",
-                },
-              ],
-            },
-            data: [12, 32, 11, 14, 9, 20, 10],
-          },
-          {
-            name: "早班NG",
-            type: "bar",
-            stack: "Ad",
-            emphasis: {
-              focus: "series",
-            },
-            data: [20, 18, 11, 24, 29, 30, 30],
-          },
-          {
-            name: "晚班OK",
-            type: "bar",
-            stack: "Ad",
-            emphasis: {
-              focus: "series",
-            },
-            data: [15, 23, 21, 15, 10, 30, 16],
-          },
-          {
-            name: "晚班NG",
-            type: "bar",
-            stack: "Ad",
-            emphasis: {
-              focus: "series",
-            },
-            data: [25, 13, 11, 25, 17, 20, 12],
-          },
-        ],
+        series: seriesData,
+        // series: [
+        //   {
+        //     name: "早班OK",
+        //     type: "bar",
+        //     stack: "Ad",
+        //     barMaxWidth: 20,
+        //     emphasis: {
+        //       focus: "series",
+        //     },
+        //     markLine: {
+        //       // 平均线设置
+        //       silent: true, // true 去掉鼠标悬浮该线上的动画
+        //       // symbol: 'none', // 该线无样式
+        //       // label: {
+        //       //   show: false, // 该线上的值去掉
+        //       // },
+        //       lineStyle: {
+        //         // 设置该线样式
+        //         normal: {
+        //           type: "dashed",
+        //           color: "#d9b500",
+        //           width: 2,
+        //         },
+        //       },
+        //       data: [
+        //         {
+        //           yAxis: 20, // 线的值
+        //           name: "target",
+        //         },
+        //       ],
+        //     },
+        //     data: [12, 32, 11, 14, 9, 20, 10],
+        //   },
+        //   {
+        //     name: "早班NG",
+        //     type: "bar",
+        //     stack: "Ad",
+        //     emphasis: {
+        //       focus: "series",
+        //     },
+        //     data: [20, 18, 11, 24, 29, 30, 30],
+        //   },
+        //   {
+        //     name: "晚班OK",
+        //     type: "bar",
+        //     stack: "Ad",
+        //     emphasis: {
+        //       focus: "series",
+        //     },
+        //     data: [15, 23, 21, 15, 10, 30, 16],
+        //   },
+        //   {
+        //     name: "晚班NG",
+        //     type: "bar",
+        //     stack: "Ad",
+        //     emphasis: {
+        //       focus: "series",
+        //     },
+        //     data: [25, 13, 11, 25, 17, 20, 12],
+        //   },
+        // ],
       };
       // 合并传入option
       Object.assign(option, this.chartOption);
