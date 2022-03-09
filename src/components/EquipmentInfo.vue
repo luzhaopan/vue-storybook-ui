@@ -42,7 +42,7 @@ export default {
   },
   mounted() {
     this.getStatus();
-    const n = 10; // 间隔每n秒请求一次数据
+    const n = 30; // 间隔每n秒请求一次数据
     const time = n * 1000;
     this.timer = setInterval(() => {
       this.getStatus();
