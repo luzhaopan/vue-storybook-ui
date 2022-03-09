@@ -67,17 +67,17 @@ export default {
       this.setOptions(this.chartData);
     },
     setOptions({ seriesData = [], yData = [] }) {
-      const now = +new Date();
-      let start1 = +new Date(
-        new Date(new Date().toLocaleDateString()).getTime() + 8 * 60 * 60 * 1000
-      ); // 当天8点
-      let start2 = +new Date(
-        new Date(new Date().toLocaleDateString()).getTime() +
-          20 * 60 * 60 * 1000
-      ); // 当天20点
+      // const now = +new Date();
+      // let start1 = +new Date(
+      //   new Date(new Date().toLocaleDateString()).getTime() + 8 * 60 * 60 * 1000
+      // ); // 当天8点
+      // let start2 = +new Date(
+      //   new Date(new Date().toLocaleDateString()).getTime() +
+      //     20 * 60 * 60 * 1000
+      // ); // 当天20点
 
-      let time;
-      time = now >= start1 && now < start2 ? start1 : start2;
+      // let time;
+      // time = now >= start1 && now < start2 ? start1 : start2;
       const min = seriesData.length && seriesData[0].value[1];
       function renderItem(params, api) {
         var categoryIndex = api.value(0);
@@ -137,13 +137,15 @@ export default {
           axisLine: {
             show: true,
           },
+          // boundaryGap: false,
           axisLabel: {
-            // interval: 0,
+            interval: 0,
             // rotate: 20,
-            formatter: function (val, index) {
-              let a = moment(time + index * 3600000 + val * 0).format(
-                "YYYY-MM-DD HH:mm:ss"
-              );
+            formatter: function (val) {
+              // let a = moment(time + index * 3600000 + val * 0).format(
+              //   "YYYY-MM-DD HH:mm:ss"
+              // );
+              let a = moment(val).format("YYYY-MM-DD HH:mm:ss");
               return a;
             },
           },
