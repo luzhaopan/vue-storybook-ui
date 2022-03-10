@@ -141,11 +141,14 @@ export default {
           axisLabel: {
             interval: 0,
             // rotate: 20,
-            formatter: function (val) {
+            formatter: function (val, index) {
               // let a = moment(time + index * 3600000 + val * 0).format(
               //   "YYYY-MM-DD HH:mm:ss"
               // );
-              let a = moment(val).format("YYYY-MM-DD HH:mm:ss");
+              let a = moment(index * 3600000 + min).format(
+                "YYYY-MM-DD HH:00:00"
+              );
+              // let a = moment(val).format("YYYY-MM-DD HH:mm:ss");
               return a;
             },
           },

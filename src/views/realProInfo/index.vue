@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <Header title="三米活塞杆一号岛生产实况" />
+    <!-- <Header title="三米活塞杆一号岛生产实况" /> -->
     <el-row class="line1" :gutter="10">
       <el-col :span="12">
         <div class="bgs">
@@ -38,7 +38,7 @@
 
 <script>
 import { getDaysData, getMonthsData, getTable } from "@/api/dashboard";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 import DailyChart from "@/components/DailyChart";
 import MonthChart from "@/components/MonthChart";
 import TableList from "@/components/TableList1";
@@ -46,18 +46,18 @@ import TableList from "@/components/TableList1";
 export default {
   name: "ProductInfo",
   components: {
-    Header,
+    // Header,
     DailyChart,
     MonthChart,
     TableList,
   },
   mounted() {
     this.getData();
-    // const n = 30; // 间隔每n秒请求一次数据
-    // const time = n * 1000;
-    // this.timer = setInterval(() => {
-    //   this.getData();
-    // }, time);
+    const n = 30; // 间隔每n秒请求一次数据
+    const time = n * 1000;
+    this.timer = setInterval(() => {
+      this.getData();
+    }, time);
   },
   beforeDestroy() {
     clearInterval(this.timer);

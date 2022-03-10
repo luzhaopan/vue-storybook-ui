@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <Header title="三米活塞杆一号岛生产实况" />
+    <!-- <Header title="三米活塞杆一号岛生产实况" /> -->
     <div class="detail">
       <div class="sub-title">设备用时分析</div>
       <Equipment />
@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 import Equipment from "@/components/EquipmentInfo";
 
 export default {
   name: "EquipmentTask",
   components: {
-    Header,
+    // Header,
     Equipment,
   },
   data() {
@@ -102,6 +102,7 @@ export default {
   .detail {
     border: 1px solid #ddd;
     height: 100%;
+    width: 100%;
     padding: 5px 10px 20px;
     background-color: #f8f8f8;
   }
