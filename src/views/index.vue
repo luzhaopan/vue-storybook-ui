@@ -11,13 +11,9 @@
         {{ item.name }}
       </div>
     </div>
-    <div class="mcont">
-      <div v-if="value === 1" class="real">
-        <Equipment />
-      </div>
-      <div v-if="value === 2" class="real">
-        <RealPro />
-      </div>
+    <div class="contant">
+      <Equipment v-if="value === 1" />
+      <RealPro v-if="value === 2" />
     </div>
   </div>
 </template>
@@ -31,7 +27,7 @@ export default {
   name: "Dashboard",
   components: { Header, Equipment, RealPro },
   mounted() {
-    const n = 300; // 间隔每n秒请求一次数据
+    const n = 300; // 间隔n秒切换场景，这里是5分钟
     const time = n * 1000;
     this.timer = setInterval(() => {
       if (this.value === 1) {
@@ -75,7 +71,9 @@ export default {
 .main-container {
   /* padding: 10px; */
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 20px);
+  display: flex;
+  flex-direction: column;
 }
 .menus {
   display: flex;
@@ -91,9 +89,12 @@ export default {
     color: #4b95fb;
   }
 }
-.mcont {
-  border: 1px solid #eaf4fd;
-  padding: 0 10px;
+.contant {
+  border: 1px solid #66a7ff;
+  padding: 20px 10px;
+  // height: 100%;
+  flex: 1;
+  overflow-y: auto;
 }
 // .real {
 //   width: 100%;

@@ -119,15 +119,19 @@ export default {
             );
           },
         },
-        // title: {
-        //   text: "设备用时分析",
-        //   left: "center",
-        // },
+        title: {
+          text: "设备用时分析",
+          left: "center",
+          textStyle: {
+            fontSize: 15,
+            color: "#000",
+          },
+        },
         grid: {
           left: "2%",
-          top: "6%",
+          top: "8%",
           right: "8%",
-          bottom: "5%",
+          bottom: "4%",
           containLabel: true,
         },
         xAxis: {

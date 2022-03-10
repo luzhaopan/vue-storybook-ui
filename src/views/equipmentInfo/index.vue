@@ -1,21 +1,15 @@
 <template>
-  <div class="main-container">
-    <!-- <Header title="三米活塞杆一号岛生产实况" /> -->
-    <div class="detail">
-      <div class="sub-title">设备用时分析</div>
-      <Equipment />
-    </div>
+  <div class="equipment-task">
+    <Equipment />
   </div>
 </template>
 
 <script>
-// import Header from "@/components/Header";
 import Equipment from "@/components/EquipmentInfo";
 
 export default {
   name: "EquipmentTask",
   components: {
-    // Header,
     Equipment,
   },
   data() {
@@ -94,11 +88,10 @@ export default {
 </script>
 
 <style lang="scss" scope>
-.main-container {
+.equipment-task {
   width: 100%;
-  height: calc(100vh - 80px);
-  /* height: 100vh; */
-  /* padding: 10px; */
+  // height: calc(100vh - 80px);
+  height: 100%;
   .detail {
     border: 1px solid #ddd;
     height: 100%;

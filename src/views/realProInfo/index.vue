@@ -1,6 +1,5 @@
 <template>
-  <div class="main-container">
-    <!-- <Header title="三米活塞杆一号岛生产实况" /> -->
+  <div class="product-info">
     <el-row class="line1" :gutter="10">
       <el-col :span="12">
         <div class="bgs">
@@ -38,15 +37,22 @@
 
 <script>
 import { getDaysData, getMonthsData, getTable } from "@/api/dashboard";
-// import Header from "@/components/Header";
 import DailyChart from "@/components/DailyChart";
 import MonthChart from "@/components/MonthChart";
 import TableList from "@/components/TableList1";
-
+const dic = {
+  早班OK: "okz",
+  早班NG: "ngz",
+  晚班OK: "okw",
+  晚班NG: "ngw",
+};
+const dicM = {
+  OK: "okz",
+  NG: "ngz",
+};
 export default {
   name: "ProductInfo",
   components: {
-    // Header,
     DailyChart,
     MonthChart,
     TableList,
@@ -99,42 +105,38 @@ export default {
         .then((res) => {
           const { status, data } = res;
           if (status === 200 && data.result) {
+            const nameArr = ["早班OK", "早班NG", "晚班OK", "晚班NG"];
             if (obj.workstation === "1820WJ10A0070") {
               if (data.result.data) {
-                const name = Object.keys(data.result.data);
+                // const name = Object.keys(data.result.data);
                 const arr = [];
-                name.forEach((item) => {
-                  if (item !== "xAxis") {
-                    arr.push({
-                      name: item,
-                      type: "bar",
-                      stack: "Ad",
-                      emphasis: {
-                        focus: "series",
-                      },
-                      data: data.result.data[item],
-                    });
-                  }
+                nameArr.forEach((item) => {
+                  arr.push({
+                    name: item,
+                    type: "bar",
+                    stack: "Ad",
+                    emphasis: {
+                      focus: "series",
+                    },
+                    data: data.result.data[dic[item]],
+                  });
                 });
                 this.days0Data.xAxisData = data.result.data["xAxis"];
                 this.days0Data.seriesData = arr;
               }
             } else {
               if (data.result.data) {
-                const name = Object.keys(data.result.data);
                 const arr = [];
-                name.forEach((item) => {
-                  if (item !== "xAxis") {
-                    arr.push({
-                      name: item,
-                      type: "bar",
-                      stack: "Ad",
-                      emphasis: {
-                        focus: "series",
-                      },
-                      data: data.result.data[item],
-                    });
-                  }
+                nameArr.forEach((item) => {
+                  arr.push({
+                    name: item,
+                    type: "bar",
+                    stack: "Ad",
+                    emphasis: {
+                      focus: "series",
+                    },
+                    data: data.result.data[dic[item]],
+                  });
                 });
                 this.days1Data.xAxisData = data.result.data["xAxis"];
                 this.days1Data.seriesData = arr;
@@ -151,36 +153,32 @@ export default {
         .then((res) => {
           const { status, data } = res;
           if (status === 200 && data.result) {
+            const nameArr = ["OK", "NG"];
             if (obj.workstation === "1820WJ10A0070") {
               if (data.result.data) {
-                const name = Object.keys(data.result.data);
+                // const name = Object.keys(data.result.data);
                 const arr = [];
-                name.forEach((item) => {
-                  if (item !== "xAxis") {
-                    arr.push({
-                      name: item,
-                      type: "bar",
-                      barMaxWidth: 20,
-                      data: data.result.data[item],
-                    });
-                  }
+                nameArr.forEach((item) => {
+                  arr.push({
+                    name: item,
+                    type: "bar",
+                    barMaxWidth: 20,
+                    data: data.result.data[dicM[item]],
+                  });
                 });
                 this.months0Data.xAxisData = data.result.data["xAxis"];
                 this.months0Data.seriesData = arr;
               }
             } else {
               if (data.result.data) {
-                const name = Object.keys(data.result.data);
                 const arr = [];
-                name.forEach((item) => {
-                  if (item !== "xAxis") {
-                    arr.push({
-                      name: item,
-                      type: "bar",
-                      barMaxWidth: 20,
-                      data: data.result.data[item],
-                    });
-                  }
+                nameArr.forEach((item) => {
+                  arr.push({
+                    name: item,
+                    type: "bar",
+                    barMaxWidth: 20,
+                    data: data.result.data[dicM[item]],
+                  });
                 });
                 this.months1Data.xAxisData = data.result.data["xAxis"];
                 this.months1Data.seriesData = arr;
@@ -211,29 +209,29 @@ export default {
 };
 </script>
 
-<style scoped>
-.main-container {
-  /* padding: 10px; */
+<style lang="scss" scoped>
+.product-info {
   width: 100%;
-}
-.bgs {
-  padding: 10px;
-  background-size: 100% 100%;
-  background-image: url("~@/assets/border.jpg");
-}
-.line1 {
-  margin: 20px 0;
-}
-.title {
-  font-size: 14px;
-  font-weight: 600;
-  background-color: rgb(216, 237, 255);
-  text-align: center;
-  padding: 5px 0;
+  // height: 100%;
+  .bgs {
+    padding: 10px;
+    background-size: 100% 100%;
+    background-image: url("~@/assets/border.jpg");
+  }
+  .line1 {
+    margin: 20px 0;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    background-color: rgb(216, 237, 255);
+    text-align: center;
+    padding: 5px 0;
 
-  background: linear-gradient(-118deg, transparent 6px, #d8edff 0) right,
-    linear-gradient(124deg, transparent 9px, #d8edff 0) left;
-  background-size: 60% 100%;
-  background-repeat: no-repeat;
+    background: linear-gradient(-118deg, transparent 6px, #d8edff 0) right,
+      linear-gradient(124deg, transparent 9px, #d8edff 0) left;
+    background-size: 60% 100%;
+    background-repeat: no-repeat;
+  }
 }
 </style>
