@@ -3,13 +3,13 @@
     <el-row class="line1" :gutter="10">
       <el-col :span="12">
         <div class="bgs">
-          <div class="title">日产数据</div>
+          <div class="title">（1820WJ10A0070）日产数据</div>
           <DailyChart chart-id="dailyChart1" :chart-data="days0Data" />
         </div>
       </el-col>
       <el-col :span="12">
         <div class="bgs">
-          <div class="title">日产数据(11月)</div>
+          <div class="title">（1820WJ10A0071）日产数据</div>
           <DailyChart chart-id="dailyChart2" :chart-data="days1Data" />
         </div>
       </el-col>
@@ -17,13 +17,13 @@
     <el-row class="line1" :gutter="10">
       <el-col :span="12">
         <div class="bgs">
-          <div class="title">月产数据</div>
+          <div class="title">（1820WJ10A0070）月产数据</div>
           <MonthChart chart-id="monthChart1" :chart-data="months0Data" />
         </div>
       </el-col>
       <el-col :span="12">
         <div class="bgs">
-          <div class="title">月产数据</div>
+          <div class="title">（1820WJ10A0071）月产数据</div>
           <MonthChart chart-id="monthChart2" :chart-data="months1Data" />
         </div>
       </el-col>
