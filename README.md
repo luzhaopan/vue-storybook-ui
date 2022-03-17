@@ -25,7 +25,7 @@ http://localhost:8080/#/equipment
 3、生产追溯
 http://localhost:8080/#/production
 
-3、生产实况看板
+4、生产实况看板
 http://localhost:8080/#/realProInfo
 
 ### 请求时间

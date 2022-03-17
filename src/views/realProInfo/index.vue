@@ -162,6 +162,7 @@ export default {
                   arr.push({
                     name: item,
                     type: "bar",
+                    stack: "OK",
                     barMaxWidth: 20,
                     data: data.result.data[dicM[item]],
                   });
@@ -176,6 +177,7 @@ export default {
                   arr.push({
                     name: item,
                     type: "bar",
+                    stack: "OK",
                     barMaxWidth: 20,
                     data: data.result.data[dicM[item]],
                   });

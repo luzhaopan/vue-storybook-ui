@@ -6,7 +6,7 @@
       <el-col :span="4"><InfoCar :infoData="infoData2" /></el-col>
       <el-col :span="12">
         <div class="title">日产数据(11月)</div>
-        <DailyChart chart-id="dailyChart" :chart-data="{}" />
+        <DailyChart chart-id="dailyChart" :chart-data="days0Data" />
       </el-col>
       <el-col :span="4">
         <div class="title">当日设备产量分析</div>
@@ -18,7 +18,7 @@
       <el-col :span="4"><InfoCar :infoData="infoData4" /></el-col>
       <el-col :span="12">
         <div class="title">月产数据</div>
-        <MonthChart chart-id="monthChart" :chart-data="{}" />
+        <MonthChart chart-id="monthChart" :chart-data="months0Data" />
       </el-col>
       <el-col :span="4">
         <div><Card /></div>
@@ -98,6 +98,85 @@ export default {
         mspeed: 0,
         speed: 0,
         total: "19/2235",
+      },
+      days0Data: {
+        seriesData: [
+          {
+            name: "早班OK",
+            type: "bar",
+            stack: "Ad",
+            emphasis: {
+              focus: "series",
+            },
+            data: [12, 32, 11, 14, 9, 20, 10],
+          },
+          {
+            name: "早班NG",
+            type: "bar",
+            stack: "Ad",
+            emphasis: {
+              focus: "series",
+            },
+            data: [20, 18, 11, 24, 29, 30, 30],
+          },
+          {
+            name: "晚班OK",
+            type: "bar",
+            stack: "Ad",
+            emphasis: {
+              focus: "series",
+            },
+            data: [15, 23, 21, 15, 10, 30, 16],
+          },
+          {
+            name: "晚班NG",
+            type: "bar",
+            stack: "Ad",
+            emphasis: {
+              focus: "series",
+            },
+            data: [25, 13, 11, 25, 17, 20, 12],
+          },
+        ],
+        xAxisData: [1, 2, 3, 4, 5, 6, 7],
+      },
+      months0Data: {
+        seriesData: [
+          {
+            name: "OK",
+            type: "bar",
+            stack: "OK",
+            barMaxWidth: 20,
+            data: [
+              2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4,
+              3.3,
+            ],
+          },
+          {
+            name: "NG",
+            type: "bar",
+            stack: "OK",
+            barMaxWidth: 20,
+            data: [
+              2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0,
+              2.3,
+            ],
+          },
+        ],
+        xAxisData: [
+          "1月",
+          "2月",
+          "3月",
+          "4月",
+          "5月",
+          "6月",
+          "7月",
+          "8月",
+          "9月",
+          "10月",
+          "11月",
+          "12月",
+        ],
       },
     };
   },

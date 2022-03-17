@@ -79,7 +79,7 @@ export default {
     getOption(data) {
       const { seriesData, xAxisData } = data;
       const option = {
-        color: ["#5470c6", "#ff864c"],
+        color: ["#5470c6", "#ee6666"],
         tooltip: {
           trigger: "axis",
         },

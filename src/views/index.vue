@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <Header title="三米活塞杆一号岛生产实况" />
+    <Header title="活塞杆探伤集成岛TJHSGTS1X" />
     <!-- <div @click="getValue">222</div> -->
     <div class="menus">
       <div
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      value: 1,
+      value: 2,
       menu: [
         {
           id: 1,
