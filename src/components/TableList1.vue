@@ -2,7 +2,7 @@
   <div class="pCard">
     <div class="title">产品产量看板</div>
     <div>
-      <el-table border :data="tableData" style="width: 100%">
+      <el-table border height="248" :data="tableData" style="width: 100%">
         <el-table-column prop="wipOrderNo" label="工单号" align="center" />
         <el-table-column
           prop="productAlias"
@@ -53,27 +53,16 @@ export default {
     return {
       // tableData: [
       //   {
-      //     wipOrderNo: "880000181012",
-      //     productAlias: "W201B",
-      //     quantity: 160,
-      //     okValue: 10,
-      //     ngValue: 6,
-      //     serisNullValue: 30,
-      //     scheduledStartDate: "2022-03-09T02:55:26.272Z",
-      //     scheduledCompleteDate: "2022-03-09T02:55:26.272Z",
-      //     prodValue: 0,
-      //   },
-      //   {
-      //     wipOrderNo: "886600011012",
-      //     productAlias: "W601B",
-      //     quantity: 60,
-      //     okValue: 10,
-      //     ngValue: 6,
-      //     serisNullValue: 30,
-      //     scheduledStartDate: "2022-03-09T02:55:26.272Z",
-      //     scheduledCompleteDate: "2022-03-09T02:55:26.272Z",
-      //     prodValue: 0,
-      //   },
+      //      wipOrderNo: "34244", // 工单号
+      // productAlias: "W201B", // 成品简码
+      // quantity: "201B211341", // 物料号
+      // okValue: "5", // 开工时间
+      // ngValue: "55", // 完工时间
+      // serisNullValue: "85", // 总消耗
+      // scheduledStartDate: "2022-11-10 09:11", // 来料数量
+      // scheduledCompleteDate: "2022-11-10 09:11", // 完成数量
+      // cDiameter2: "56.33", // 订单状态
+      //   }
       // ],
     };
   },
