@@ -42,3 +42,12 @@ export function getTable(params) {
     params,
   });
 }
+
+// 生产追溯
+export function getProData(params) {
+  return request({
+    url: "/sany_bgdatas/GetKantime",
+    method: "get",
+    params,
+  });
+}

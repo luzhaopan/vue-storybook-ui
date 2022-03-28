@@ -1,7 +1,7 @@
 <template>
   <div class="pro-container">
     <div class="main">
-      <div class="nums">当前生产数量：7（2022-01-03）</div>
+      <div class="nums">当前生产数量：{{ proDate.total }}</div>
       <div class="name">生产追溯</div>
     </div>
     <div class="list">
@@ -9,15 +9,17 @@
         <div>{{ item.title }}</div>
       </div>
     </div>
-    <div v-for="item in proData" :key="item.taskId" class="list">
+    <div v-for="item in proData" :key="item.prodId" class="list">
       <div class="list-item">
         <div class="task">
-          <div class="taskNo">{{ item.taskNo }}</div>
-          <div class="taskId">{{ item.taskId }}</div>
-          <div class="time">{{ item.taskTime ? item.taskTime : "--" }}</div>
+          <div class="taskNo">{{ item.prodNo }}</div>
+          <div class="taskId">{{ item.prodId }}</div>
+          <div class="time">
+            {{ item.prodCountTime ? item.prodCountTime : "--" }}
+          </div>
         </div>
       </div>
-      <div class="list-item" v-for="p in item.children" :key="p.eqId">
+      <div class="list-item" v-for="(p, index) in item.prodList" :key="index">
         <div class="eq-card">
           <div style="width: 100%">
             <div
@@ -29,13 +31,9 @@
               }"
             >
               <!-- <div class="eName">{{ p.eqName }}</div> -->
-              <div class="ctext">
-                {{ p.startTime ? p.startTime : "--" }}
-              </div>
-              <div class="ctext">{{ p.endTime ? p.endTime : "--" }}</div>
-              <div class="ctext">
-                {{ p.endTime && p.endTime ? "43分22秒" : "--" }}
-              </div>
+              <div class="ctext">{{ p.startTime || "--" }}</div>
+              <div class="ctext">{{ p.endTime || "--" }}</div>
+              <div class="ctext">{{ p.countTime || "--" }}</div>
             </div>
             <!-- <div class="time">43分22秒</div> -->
           </div>
@@ -56,6 +54,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    proDate: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {
@@ -65,163 +67,28 @@ export default {
           title: "工件信息",
         },
         {
-          id: "磨床一序加工",
-          title: "磨床一序加工",
+          id: "探伤",
+          title: "探伤",
         },
         {
-          id: "机床加工",
-          title: "机床加工",
+          id: "清洗",
+          title: "清洗",
         },
         {
-          id: "磨床二序加工",
-          title: "磨床二序加工",
+          id: "装配",
+          title: "装配",
         },
         {
-          id: "检测台检测",
-          title: "检测台检测",
-        },
-        {
-          id: "小车",
-          title: "小车",
+          id: "试压",
+          title: "试压",
         },
       ],
-      // proInfo: [
-      //   {
-      //     taskNo: "1018621886235673600",
-      //     taskId: "201821J1838CG",
-      //     taskTime: null,
-      //     children: [
-      //       {
-      //         eqName: "机床1加工",
-      //         eqId: "32323",
-      //         startTime: "2021-11-10 09:10:51",
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "机床2加工",
-      //         eqId: "3233323",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "磨床加工",
-      //         eqId: "3232423",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "清洗机",
-      //         eqId: "32323599",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "检测台",
-      //         eqId: "39999",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "小车",
-      //         eqId: "3000044",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     taskNo: "1018621886235666600",
-      //     taskId: "201921J1838CG",
-      //     taskTime: "43分3秒",
-      //     children: [
-      //       {
-      //         eqName: "机床1加工",
-      //         eqId: "3231",
-      //         startTime: "2021-11-10 09:10:51",
-      //         endTime: "2021-11-10 09:20:51",
-      //       },
-      //       {
-      //         eqName: "机床2加工",
-      //         eqId: "323523",
-      //         startTime: "2021-11-10 09:10:51",
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "磨床加工",
-      //         eqId: "32623",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "清洗机",
-      //         eqId: "327599",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "检测台",
-      //         eqId: "389",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "小车",
-      //         eqId: "300065044",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     taskNo: "1418521886235666600",
-      //     taskId: "201961J1838CG",
-      //     taskTime: "55分33秒",
-      //     children: [
-      //       {
-      //         eqName: "机床1加工",
-      //         eqId: "32991",
-      //         startTime: "2021-11-10 09:10:51",
-      //         endTime: "2021-11-10 09:20:51",
-      //       },
-      //       {
-      //         eqName: "机床2加工",
-      //         eqId: "3235r23",
-      //         startTime: "2021-11-10 09:10:51",
-      //         endTime: "2021-11-10 09:20:51",
-      //       },
-      //       {
-      //         eqName: "磨床加工",
-      //         eqId: "326213",
-      //         startTime: "2021-11-10 09:20:51",
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "清洗机",
-      //         eqId: "3217599",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "检测台",
-      //         eqId: "3891",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //       {
-      //         eqName: "小车",
-      //         eqId: "3010065044",
-      //         startTime: null,
-      //         endTime: null,
-      //       },
-      //     ],
-      //   },
-      // ],
     };
   },
 };
 </script>
 
-<style>
+<style scoped>
 .pro-container {
   /* padding: 10px; */
   width: 100%;
@@ -276,7 +143,7 @@ export default {
   font-weight: 600;
 }
 .taskId {
-  font-size: 10px;
+  font-size: 12px;
   color: rgb(143, 143, 143);
 }
 .card {
@@ -287,35 +154,17 @@ export default {
 .items {
   padding: 5px;
   line-height: 20px;
-  /* text-align: left; */
-  /* border-radius: 5px; */
   color: #fff;
-  /* height: 70px; */
 }
-.eName {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
+
 .ctext {
-  font-size: 8px;
+  font-size: 13px;
   white-space: nowrap;
   text-align: center;
 }
-.arrow {
-  width: 20px;
-  height: 20px;
-  background-color: #044c80;
-  border: 1px solid #000;
-  color: #fff;
-  font-size: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 35px 2px 0;
-}
+
 .time {
-  font-size: 12px;
+  font-size: 13px;
 }
 .active {
   background-color: #0095ff;

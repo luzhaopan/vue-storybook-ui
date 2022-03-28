@@ -12,8 +12,9 @@
       </div>
     </div>
     <div class="contant">
-      <Equipment v-if="value === 1" />
-      <RealPro v-if="value === 2" />
+      <Equipment v-if="value == 1" />
+      <RealPro v-if="value == 2" />
+      <ProductionInfo v-if="value == 3" />
     </div>
   </div>
 </template>
@@ -22,16 +23,22 @@
 import Header from "@/components/Header";
 import Equipment from "./equipmentInfo";
 import RealPro from "./realProInfo";
+import ProductionInfo from "./productionInfo";
 
 export default {
   name: "Dashboard",
-  components: { Header, Equipment, RealPro },
+  components: { Header, Equipment, RealPro, ProductionInfo },
   mounted() {
     const n = 300; // 间隔n秒切换场景，这里是5分钟
     const time = n * 1000;
     this.timer = setInterval(() => {
-      if (this.value === 1) {
-        this.value = 2;
+      // if (this.value === 1) {
+      //   this.value = 2;
+      // } else {
+      //   this.value = 1;
+      // }
+      if (this.value < 3) {
+        this.value++;
       } else {
         this.value = 1;
       }
@@ -51,6 +58,10 @@ export default {
         {
           id: 2,
           name: "生产实况看板",
+        },
+        {
+          id: 3,
+          name: "生产追溯",
         },
       ],
     };
@@ -96,16 +107,6 @@ export default {
   flex: 1;
   overflow-y: auto;
 }
-// .real {
-//   width: 100%;
-//   height: 100%;
-// }
-/* ::v-deep .el-tabs__content {
-  padding: 0 15px;
-} */
-// ::-webkit-scrollbar {
-//   display: none;
-// }
 ::-webkit-scrollbar {
   width: 5px;
   height: 20px;
