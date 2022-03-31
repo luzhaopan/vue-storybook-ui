@@ -4,9 +4,11 @@
     <!-- <div @click="getValue">222</div> -->
     <div class="menus">
       <div
+        style="cursor: pointer"
         v-for="item in menu"
         :class="{ checked: value === item.id }"
         :key="item.id"
+        @click="handleClick(item.id)"
       >
         {{ item.name }}
       </div>
@@ -74,6 +76,9 @@ export default {
         this.value = 1;
       }
     },
+    handleClick(val) {
+      this.value = val;
+    },
   },
 };
 </script>
@@ -97,7 +102,8 @@ export default {
     padding: 4px 12px;
   }
   .checked {
-    color: #4b95fb;
+    color: #30a1fe;
+    font-weight: 600;
   }
 }
 .contant {

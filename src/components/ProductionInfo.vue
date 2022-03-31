@@ -25,12 +25,11 @@
             <div
               :class="{
                 items: true,
-                active: p.startTime && !p.endTime,
-                end: p.startTime && p.endTime,
-                nowork: !p.startTime && !p.endTime,
+                active: p.startTime && p.tanSQtStatuts === 'OK',
+                end: p.startTime && p.tanSQtStatuts === 'NG',
+                nowork: !p.startTime,
               }"
             >
-              <!-- <div class="eName">{{ p.eqName }}</div> -->
               <div class="ctext">{{ p.startTime || "--" }}</div>
               <div class="ctext">{{ p.endTime || "--" }}</div>
               <div class="ctext">{{ p.countTime || "--" }}</div>
@@ -167,12 +166,12 @@ export default {
   font-size: 13px;
 }
 .active {
-  background-color: #0095ff;
+  background-color: green;
 }
 .nowork {
   background-color: #b3b3b3;
 }
 .end {
-  background-color: #04da76;
+  background-color: #ff8d8d;
 }
 </style>
