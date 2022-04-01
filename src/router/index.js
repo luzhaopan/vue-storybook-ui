@@ -10,6 +10,7 @@ import Equipment from "../views/equipmentInfo";
 import Production from "../views/productionInfo";
 import RealProduce from "../views/realProduce";
 import RealProInfo from "../views/realProInfo";
+import RealEquipProduce from "../views/realEquipProduce";
 
 const routes = [
   { path: "", redirect: "dashboard" },
@@ -19,6 +20,7 @@ const routes = [
   { path: "/production", component: Production },
   { path: "/realProduce", component: RealProduce },
   { path: "/realProInfo", component: RealProInfo },
+  { path: "/realEquipProduce", component: RealEquipProduce },
 ];
 
 //实例化VueRouter并将routes添加进去

@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .infoCard {
   position: relative;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee;*/
   padding: 10px;
 }
 .title {
