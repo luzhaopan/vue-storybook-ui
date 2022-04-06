@@ -136,6 +136,7 @@ export default {
   justify-content: center;
   align-items: center;
   line-height: 20px;
+  background: #f4f6f7;
 }
 .taskNo {
   font-size: 14px;
@@ -166,7 +167,7 @@ export default {
   font-size: 13px;
 }
 .active {
-  background-color: green;
+  background-color: #00cb51;
 }
 .nowork {
   background-color: #b3b3b3;

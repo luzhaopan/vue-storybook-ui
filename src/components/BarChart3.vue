@@ -67,6 +67,7 @@ export default {
       this.setOptions(this.chartData);
     },
     setOptions({ seriesData = [], yData = [] }) {
+      console.log(seriesData);
       // const now = +new Date();
       // let start1 = +new Date(
       //   new Date(new Date().toLocaleDateString()).getTime() + 8 * 60 * 60 * 1000
@@ -78,7 +79,7 @@ export default {
 
       // let time;
       // time = now >= start1 && now < start2 ? start1 : start2;
-      const min = seriesData.length && seriesData[0].value[1];
+      // const min = seriesData.length && seriesData[0].value[1];
       function renderItem(params, api) {
         var categoryIndex = api.value(0);
         var start = api.coord([api.value(1), categoryIndex]);
@@ -112,10 +113,17 @@ export default {
         tooltip: {
           formatter: function (params) {
             return (
+              '<div style="float: left;">' +
               params.marker +
               params.name +
-              ": " +
-              moment(params.value[1]).format("YYYY-MM-DD HH:mm:ss")
+              "</div>" +
+              "<br/>" +
+              "开始: " +
+              moment(params.value[1]).format("YYYY-MM-DD HH:mm:ss") +
+              "<br/>" +
+              "结束: " +
+              moment(params.value[2]).format("YYYY-MM-DD HH:mm:ss") +
+              "<br/>"
             );
           },
         },
@@ -135,15 +143,23 @@ export default {
           containLabel: true,
         },
         xAxis: {
-          min: min,
+          min: function (value) {
+            return value.min;
+          },
           // scale: true,
           name: "时间",
           axisLine: {
             show: true,
           },
+          // splitNumber: 0,
+          minInterval: 1,
+          // maxInterval: 3600 * 24 * 1000,
           // boundaryGap: false,
+          // axisTick: {
+          //   interval: 0,
+          // },
           axisLabel: {
-            interval: 0,
+            // interval: 0,
             // rotate: 20,
             formatter: function (val) {
               // let a = moment(time + index * 3600000 + val * 0).format(

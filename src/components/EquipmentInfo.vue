@@ -64,17 +64,6 @@ export default {
               0: { name: "关机", color: "#b2b1b1", equipmentStatus: 0 },
             };
             this.task = data.result;
-            // if (this.task.equipmentTask.length > 0) {
-            //   this.task.equipmentTask.forEach((item) => {
-            //     data.result.equipmentTask.forEach((obj) => {
-            //       if (item.equipmentId === obj.equipmentId) {
-            //         item.equipmentList.push(...obj.equipmentList);
-            //       }
-            //     });
-            //   });
-            // } else {
-            //   this.task = data.result;
-            // }
             const eqId = [];
             const eqArr = [];
             const { equipmentTask = [] } = this.task;
@@ -84,7 +73,6 @@ export default {
                 let start = +new Date(obj.acqDateStart);
                 let end = +new Date(obj.acqDateEnd);
                 var duration = end - start;
-                // console.log("duration", duration);
                 // var duration = 1000;
                 eqArr.push({
                   id: item.equipmentId,

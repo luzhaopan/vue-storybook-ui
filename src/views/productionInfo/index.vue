@@ -67,10 +67,10 @@ export default {
     getProData() {
       getProData()
         .then((res) => {
-          const { status, result } = res;
-          if (status == 200 && result.task) {
-            this.proData = result.task;
-            this.proDate.total = result.prodcount;
+          const { status, data } = res;
+          if (status == 200 && data.result.task) {
+            this.proData = data.result.task;
+            this.proDate.total = data.result.prodCount;
           }
         })
         .catch(() => {})
@@ -84,17 +84,5 @@ export default {
 .main-container {
   width: 100%;
   position: relative;
-}
-.img {
-  width: 100px;
-  height: 30px;
-  position: absolute;
-  left: 10px;
-}
-.title {
-  text-align: center;
-  width: 100%;
-  font-size: 18px;
-  font-weight: 600;
 }
 </style>
