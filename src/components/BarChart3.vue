@@ -66,7 +66,7 @@ export default {
       this.chart = echarts.init(this.$el, "macarons");
       this.setOptions(this.chartData);
     },
-    setOptions({ seriesData = [], yData = [] }) {
+    setOptions({ seriesData = [], yData = [], desData = [] }) {
       // console.log(seriesData);
       // const now = +new Date();
       // let start1 = +new Date(
@@ -177,10 +177,37 @@ export default {
             },
           },
         },
-        yAxis: {
-          name: "设备",
-          data: yData,
-        },
+        yAxis: [
+          {
+            name: "设备",
+            data: yData,
+          },
+          {
+            position: "left",
+            // offset: -10,
+            zlevel: 1000,
+            axisLine: {
+              show: false,
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              interval: 0,
+              inside: true,
+              // fontSize: 12,
+              // fontWeight: "bold",
+              // color: "#080808",
+              textStyle: {
+                color: "#080808",
+                verticalAlign: "bottom",
+                // align: "left",
+                padding: [10, 0, 10, 0],
+              },
+            },
+            data: desData,
+          },
+        ],
         series: [
           {
             type: "custom",
@@ -189,23 +216,19 @@ export default {
               color: "#000",
               fontSize: 12,
             },
-            label: {
-              show: true,
-              position: [4, -21],
-              formatter: function (data) {
-                // console.log("dd", data);
-                // "作业时间：06：05（作业率:63.31%） 待机时间：03：32  故障时间：0  停机时间：0"
-                const t =
-                  data.dataIndex === 0 ||
-                  data.dataIndex === 10 ||
-                  data.dataIndex === 20 ||
-                  data.dataIndex === 30;
-                return t ? "" : "";
-              },
-            },
-            itemStyle: {
-              opacity: 0.8,
-            },
+            // label: {
+            //   show: true,
+            //   position: [4, -21],
+            //   formatter: function (data) {
+            //     console.log("dd", data);
+            //     // "作业时间：06：05（作业率:63.31%） 待机时间：03：32  故障时间：0  停机时间：0"
+            //     const t = data.dataIndex === 0 || data.dataIndex === 30;
+            //     return t ? "444" : "ww";
+            //   },
+            // },
+            // itemStyle: {
+            //   opacity: 0.8,
+            // },
             encode: {
               x: [1, 2],
               y: 0,

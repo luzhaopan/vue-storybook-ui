@@ -37,7 +37,7 @@ export default {
     return {
       task: { equipmentTask: [] },
       timer: null,
-      chartData: { seriesData: [], yData: [] },
+      chartData: { seriesData: [], yData: [], desData: [] },
     };
   },
   mounted() {
@@ -66,9 +66,22 @@ export default {
             this.task = data.result;
             const eqId = [];
             const eqArr = [];
+            const des = [];
             const { equipmentTask = [] } = this.task;
             equipmentTask.forEach((item, index) => {
               eqId.push(item.equipmentId);
+              let rate =
+                item.astatus /
+                (item.astatus + item.bstatus + item.cstatus + item.dstatus);
+              des.push(
+                `作业时间：${this.timeFilter(
+                  item.astatus
+                )}（作业率: ${rate}）\xa0\xa0\xa0\xa0待机时间：${this.timeFilter(
+                  item.bstatus
+                )}\xa0\xa0\xa0\xa0故障时间：${this.timeFilter(
+                  item.cstatus
+                )}\xa0\xa0\xa0\xa0停机时间：${this.timeFilter(0)}`
+              );
               item.equipmentList.forEach((obj) => {
                 let start = +new Date(obj.acqDateStart);
                 let end = +new Date(obj.acqDateEnd);
@@ -87,10 +100,26 @@ export default {
             });
             this.chartData.seriesData = eqArr;
             this.chartData.yData = eqId;
+            this.chartData.desData = des;
           }
         })
         .catch(() => {})
         .finally(() => {});
+    },
+    timeFilter(val) {
+      let hour =
+        Math.floor(val / 3600) < 10
+          ? "0" + Math.floor(val / 3600)
+          : Math.floor(val / 3600) < 10;
+      let minute =
+        Math.floor((val - hour * 3600) / 60) < 10
+          ? "0" + Math.floor((val - hour * 3600) / 60)
+          : Math.floor((val - hour * 3600) / 60);
+      // let second =
+      //   val - hour * 3600 - minute * 60 < 10
+      //     ? "0" + (val - hour * 3600 - minute * 60)
+      //     : val - hour * 3600 - minute * 60;
+      return hour + ":" + minute;
     },
   },
 };
