@@ -157,7 +157,7 @@ export default {
           },
           // splitNumber: 0,
           minInterval: 1 * 3600 * 1000,
-          // maxInterval: 1 * 3600 * 1000,
+          maxInterval: 1 * 3600 * 1000,
           // boundaryGap: false,
           // axisTick: {
           //   interval: 0,
