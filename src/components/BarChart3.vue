@@ -67,7 +67,7 @@ export default {
       this.setOptions(this.chartData);
     },
     setOptions({ seriesData = [], yData = [] }) {
-      console.log(seriesData);
+      // console.log(seriesData);
       // const now = +new Date();
       // let start1 = +new Date(
       //   new Date(new Date().toLocaleDateString()).getTime() + 8 * 60 * 60 * 1000
@@ -79,7 +79,8 @@ export default {
 
       // let time;
       // time = now >= start1 && now < start2 ? start1 : start2;
-      // const min = seriesData.length && seriesData[0].value[1];
+      const min = seriesData.length && seriesData[0].value[1];
+      // console.log(min);
       function renderItem(params, api) {
         var categoryIndex = api.value(0);
         var start = api.coord([api.value(1), categoryIndex]);
@@ -143,24 +144,27 @@ export default {
           containLabel: true,
         },
         xAxis: {
-          min: function (value) {
-            return value.min;
+          min: function () {
+            return min;
           },
+          // max: function () {
+          //   return start2;
+          // },
           // scale: true,
           name: "时间",
           axisLine: {
             show: true,
           },
           // splitNumber: 0,
-          minInterval: 1,
-          // maxInterval: 3600 * 24 * 1000,
+          minInterval: 1 * 3600 * 1000,
+          // maxInterval: 1 * 3600 * 1000,
           // boundaryGap: false,
           // axisTick: {
           //   interval: 0,
           // },
           axisLabel: {
-            // interval: 0,
-            // rotate: 20,
+            // interval: 10,
+            // rotate: 90,
             formatter: function (val) {
               // let a = moment(time + index * 3600000 + val * 0).format(
               //   "YYYY-MM-DD HH:mm:ss"
@@ -168,7 +172,7 @@ export default {
               // let a = moment(index * 3600000 + min).format(
               //   "YYYY-MM-DD HH:00:00"
               // );
-              let a = moment(val).format("YYYY-MM-DD HH:mm:ss");
+              let a = moment(val).format("HH:mm:ss");
               return a;
             },
           },
