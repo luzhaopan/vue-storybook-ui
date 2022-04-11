@@ -69,18 +69,28 @@ export default {
             const des = [];
             const { equipmentTask = [] } = this.task;
             equipmentTask.forEach((item, index) => {
-              eqId.push(item.equipmentId);
-              let rate =
-                item.astatus /
-                (item.astatus + item.bstatus + item.cstatus + item.dstatus);
+              eqId.push(item.id);
+              let rate = 0;
+              if (
+                !item.astatus &&
+                !item.bstatus &&
+                !item.cstatus &&
+                !item.dstatus
+              ) {
+                rate = 0;
+              } else {
+                rate =
+                  item.astatus /
+                  (item.astatus + item.bstatus + item.cstatus + item.dstatus);
+              }
               des.push(
                 `作业时间：${this.timeFilter(
                   item.astatus
-                )}（作业率: ${rate}）\xa0\xa0\xa0\xa0待机时间：${this.timeFilter(
+                )}（作业率: ${rate}%）\xa0\xa0\xa0\xa0待机时间：${this.timeFilter(
                   item.bstatus
                 )}\xa0\xa0\xa0\xa0故障时间：${this.timeFilter(
                   item.cstatus
-                )}\xa0\xa0\xa0\xa0停机时间：${this.timeFilter(0)}`
+                )}\xa0\xa0\xa0\xa0停机时间：${this.timeFilter(item.dstatus)}`
               );
               item.equipmentList.forEach((obj) => {
                 let start = +new Date(obj.acqDateStart);
@@ -88,7 +98,7 @@ export default {
                 var duration = end - start;
                 // var duration = 1000;
                 eqArr.push({
-                  id: item.equipmentId,
+                  id: item.id,
                   name: types1[obj.equipmentStatus].name,
                   value: [index, start, end, duration],
                   // value: [index, start, (end += duration), duration],
@@ -107,19 +117,23 @@ export default {
         .finally(() => {});
     },
     timeFilter(val) {
-      let hour =
-        Math.floor(val / 3600) < 10
-          ? "0" + Math.floor(val / 3600)
-          : Math.floor(val / 3600) < 10;
-      let minute =
-        Math.floor((val - hour * 3600) / 60) < 10
-          ? "0" + Math.floor((val - hour * 3600) / 60)
-          : Math.floor((val - hour * 3600) / 60);
-      // let second =
-      //   val - hour * 3600 - minute * 60 < 10
-      //     ? "0" + (val - hour * 3600 - minute * 60)
-      //     : val - hour * 3600 - minute * 60;
-      return hour + ":" + minute;
+      if (!val) {
+        return 0;
+      } else {
+        let hour =
+          Math.floor(val / 3600) < 10
+            ? "0" + Math.floor(val / 3600)
+            : Math.floor(val / 3600) < 10;
+        let minute =
+          Math.floor((val - hour * 3600) / 60) < 10
+            ? "0" + Math.floor((val - hour * 3600) / 60)
+            : Math.floor((val - hour * 3600) / 60);
+        // let second =
+        //   val - hour * 3600 - minute * 60 < 10
+        //     ? "0" + (val - hour * 3600 - minute * 60)
+        //     : val - hour * 3600 - minute * 60;
+        return hour + ":" + minute;
+      }
     },
   },
 };
