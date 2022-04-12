@@ -66,7 +66,7 @@ export default {
       if (this.chartData.seriesData.length === 0) {
         this.chart.clear();
         this.chart.showLoading({
-          text: "暂无数据",
+          text: "No Data",
           color: "#fff",
           textColor: "#909399",
           fontSize: "14px",
