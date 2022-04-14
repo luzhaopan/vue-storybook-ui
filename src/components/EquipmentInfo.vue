@@ -69,7 +69,7 @@ export default {
             const des = [];
             const { equipmentTask = [] } = this.task;
             equipmentTask.forEach((item, index) => {
-              eqId.push(item.id);
+              eqId.push(item.equipmentName);
               let rate = 0;
               if (
                 !item.astatus &&
