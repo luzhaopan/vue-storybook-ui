@@ -79,9 +79,10 @@ export default {
               ) {
                 rate = 0;
               } else {
-                rate =
+                let num =
                   item.astatus /
                   (item.astatus + item.bstatus + item.cstatus + item.dstatus);
+                rate = num.toFixed(2);
               }
               des.push(
                 `作业时间：${this.timeFilter(
