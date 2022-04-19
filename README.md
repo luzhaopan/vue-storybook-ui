@@ -46,3 +46,6 @@ http://localhost:8080/#/realEquipProduce
 路径：src\views\realProInfo\index.vue
 修改该目录下的 mounted()函数里 n 变量值
 
+4.生产实况看板2接口请求时间
+路径：src\views\realEquipProduce\index.vue
+修改该目录下的 mounted()函数里 n 变量值

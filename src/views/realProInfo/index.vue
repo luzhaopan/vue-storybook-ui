@@ -105,16 +105,33 @@ export default {
         .then((res) => {
           const { status, data } = res;
           if (status === 200 && data.result) {
-            const nameArr = ["早班OK", "早班NG", "晚班OK", "晚班NG"];
+            const nameArr1 = ["早班OK", "早班NG"];
+            const nameArr2 = ["晚班OK", "晚班NG"];
             if (obj.workstation === "1820WJ10A0070") {
               if (data.result.data) {
                 // const name = Object.keys(data.result.data);
-                const arr = [];
-                nameArr.forEach((item) => {
-                  arr.push({
+                const arr1 = [];
+                const arr2 = [];
+                nameArr1.forEach((item) => {
+                  arr1.push({
                     name: item,
                     type: "bar",
-                    stack: "Ad",
+                    stack: "one",
+                    barMinWidth : 15,
+                    barMaxWidth : 20,
+                    emphasis: {
+                      focus: "series",
+                    },
+                    data: data.result.data[dic[item]],
+                  });
+                });
+                nameArr2.forEach((item) => {
+                  arr2.push({
+                    name: item,
+                    type: "bar",
+                    stack: "two",
+                    barMinWidth : 15,
+                    barMaxWidth : 20,
                     emphasis: {
                       focus: "series",
                     },
@@ -122,16 +139,32 @@ export default {
                   });
                 });
                 this.days0Data.xAxisData = data.result.data["xAxis"];
-                this.days0Data.seriesData = arr;
+                this.days0Data.seriesData = [...arr1, ...arr2];
               }
             } else {
               if (data.result.data) {
-                const arr = [];
-                nameArr.forEach((item) => {
-                  arr.push({
+                const arr1 = [];
+                const arr2 = [];
+                nameArr1.forEach((item) => {
+                  arr1.push({
                     name: item,
                     type: "bar",
-                    stack: "Ad",
+                    stack: "one",
+                    barMinWidth : 15,
+                    barMaxWidth : 20,
+                    emphasis: {
+                      focus: "series",
+                    },
+                    data: data.result.data[dic[item]],
+                  });
+                });
+                nameArr2.forEach((item) => {
+                  arr2.push({
+                    name: item,
+                    type: "bar",
+                    stack: "two",
+                    barMinWidth : 15,
+                    barMaxWidth : 20,
                     emphasis: {
                       focus: "series",
                     },
@@ -139,7 +172,7 @@ export default {
                   });
                 });
                 this.days1Data.xAxisData = data.result.data["xAxis"];
-                this.days1Data.seriesData = arr;
+                this.days1Data.seriesData = [...arr1, ...arr2];
               }
             }
           }

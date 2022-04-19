@@ -45,8 +45,8 @@ export default {
       })
       this.type = obj['select']
     }
-    const n = 300; // 间隔n秒切换场景，这里是5分钟
-    const time = n * 1000;
+    const n = 1; // 间隔n分钟切换场景，这里是1分钟
+    const time = n * 60 * 1000;
     this.timer = setInterval(() => {
       // if (this.value === 1) {
       //   this.value = 2;

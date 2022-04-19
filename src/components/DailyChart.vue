@@ -99,6 +99,10 @@ export default {
         xAxis: [
           {
             type: "category",
+            // axisTick:{
+            //   //在设置boundaryGap 为 true的前提下，设置alignWithLabel使刻度线和标签对齐
+            //   alignWithLabel: true
+            // },
             data: xAxisData,
           },
         ],

@@ -216,14 +216,31 @@ export default {
         .then((res) => {
           const { status, data } = res;
           if (status === 200 && data.result) {
-            const nameArr = ["早班OK", "早班NG", "晚班OK", "晚班NG"];
+            const nameArr1 = ["早班OK", "早班NG"];
+            const nameArr2 = ["晚班OK", "晚班NG"];
             if (data.result.data) {
-              const arr = [];
-              nameArr.forEach((item) => {
-                arr.push({
+              const arr1 = [];
+              const arr2 = [];
+              nameArr1.forEach((item) => {
+                arr1.push({
                   name: item,
                   type: "bar",
-                  stack: "Ad",
+                  stack: "one",
+                  barMinWidth : 15,
+                  barMaxWidth : 20,
+                  emphasis: {
+                    focus: "series",
+                  },
+                  data: data.result.data[dic[item]],
+                });
+              });
+              nameArr2.forEach((item) => {
+                arr2.push({
+                  name: item,
+                  type: "bar",
+                  stack: "two",
+                  barMinWidth : 15,
+                  barMaxWidth : 20,
                   emphasis: {
                     focus: "series",
                   },
@@ -231,7 +248,7 @@ export default {
                 });
               });
               this.daysData.xAxisData = data.result.data["xAxis"];
-              this.daysData.seriesData = arr;
+              this.daysData.seriesData = [...arr1, ...arr2];
             }
           }
         })
