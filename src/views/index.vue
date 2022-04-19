@@ -15,7 +15,10 @@
     </div>
     <div class="contant">
       <Equipment v-if="value == 1" />
-      <RealPro v-if="value == 2" />
+      <div v-if="value == 2">
+        <RealPro v-if="type == '1'" />
+        <RealEquipProduce v-else />
+      </div>
       <ProductionInfo v-if="value == 3" />
     </div>
   </div>
@@ -26,11 +29,22 @@ import Header from "@/components/Header";
 import Equipment from "./equipmentInfo";
 import RealPro from "./realProInfo";
 import ProductionInfo from "./productionInfo";
+import RealEquipProduce from "./realEquipProduce";
 
 export default {
   name: "Dashboard",
-  components: { Header, Equipment, RealPro, ProductionInfo },
+  components: { Header, Equipment, RealPro, ProductionInfo, RealEquipProduce },
   mounted() {
+    let url = window.location.href;
+    if(url.indexOf('?') != -1){
+      let obj = {};
+      let arr = url.slice(url.indexOf('?')+1).split('&');
+      arr.forEach(item => {
+          let param = item.split('=');
+          obj[param[0]] = param[1];
+      })
+      this.type = obj['select']
+    }
     const n = 300; // 间隔n秒切换场景，这里是5分钟
     const time = n * 1000;
     this.timer = setInterval(() => {
@@ -52,6 +66,7 @@ export default {
   data() {
     return {
       value: 1,
+      type: '1',
       menu: [
         {
           id: 1,

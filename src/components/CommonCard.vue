@@ -1,17 +1,19 @@
 <template>
   <div class="infoCard">
-    <div class="title">{{ infoData.name }}</div>
+    <div class="title">{{ infoData.equipmentName }}</div>
     <div style="text-align: right; margin: 0px -4px -5px">
-      <img class="img1" :src="getSrc(infoData.state)" alt="" />
+      <img class="img1" :src="getSrc(infoData.equipmentStatus)" alt="" />
     </div>
-    <div class="item">连接状态：{{ infoData.status }}</div>
-    <div class="item">操作模式：{{ infoData.pattern }}</div>
-    <div class="item">运行状态：{{ infoData.runStatus }}</div>
+    <div class="item">连接状态：{{ connectDic[infoData.equipmentStatus] }}</div>
+    <div class="item">操作模式：自动</div>
+    <div class="item">运行状态：{{ runDic[infoData.equipmentStatus] }}</div>
     <img v-if="infoData.imgSrc" class="img2" :src="infoData.imgSrc" alt="" />
   </div>
 </template>
 
 <script>
+// equipmentStatus 0 关机  123 联机
+// 运行状态  equipmentStatus 0关机 1作业 2 待机 3报警
 export default {
   name: "InfoCard",
   props: {
@@ -23,6 +25,18 @@ export default {
       src1: require("@/assets/bj1.png"),
       src2: require("@/assets/bj2.png"),
       src3: require("@/assets/bj3.png"),
+      connectDic: {
+        0: '关机',
+        1: '联机',
+        2: '联机',
+        3: '联机',
+      },
+      runDic: {
+        0: '关机',
+        1: '作业',
+        2: '待机',
+        3: '报警',
+      }
     };
   },
   methods: {

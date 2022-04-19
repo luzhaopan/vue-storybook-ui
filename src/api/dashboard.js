@@ -51,3 +51,30 @@ export function getProData(params) {
     params,
   });
 }
+
+// 设备生产信息
+export function getStatusOne(params) {
+  return request({
+    url: "/sany_equipmentstatuss/GetStatusOne",
+    method: "get",
+    params,
+  });
+}
+
+// 日产数据1
+export function getDaysData1(params) {
+  return request({
+    url: "/sany_prodstatisticsdays/GetStatus",
+    method: "get",
+    params,
+  });
+}
+
+// 月产数据1
+export function getMonthsData1(params) {
+  return request({
+    url: "/sany_prodstatisticsmonths/GetStatus",
+    method: "get",
+    params,
+  });
+}

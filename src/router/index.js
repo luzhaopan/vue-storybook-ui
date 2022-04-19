@@ -15,11 +15,11 @@ import RealEquipProduce from "../views/realEquipProduce";
 const routes = [
   { path: "", redirect: "dashboard" },
   //单个路由均为对象类型，path代表的是路径，component代表组件
-  { path: "/dashboard", component: Dashboard },
-  { path: "/equipment", component: Equipment },
-  { path: "/production", component: Production },
+  { path: "/dashboard", component: Dashboard }, 
+  { path: "/equipment", component: Equipment }, // 设备用时分析
+  { path: "/production", component: Production }, // 生产追溯
   { path: "/realProduce", component: RealProduce },
-  { path: "/realProInfo", component: RealProInfo },
+  { path: "/realProInfo", component: RealProInfo }, // 生产实况看板
   { path: "/realEquipProduce", component: RealEquipProduce },
 ];
 
