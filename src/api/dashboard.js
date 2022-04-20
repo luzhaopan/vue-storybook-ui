@@ -78,3 +78,12 @@ export function getMonthsData1(params) {
     params,
   });
 }
+
+// AGV表格
+export function getAgvTable(params) {
+  return request({
+    url: "/sany_rfidlists/GetTable",
+    method: "get",
+    params,
+  });
+}

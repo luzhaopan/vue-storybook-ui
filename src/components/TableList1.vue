@@ -2,7 +2,7 @@
   <div class="pCard">
     <div class="title">产品产量看板</div>
     <div>
-      <el-table border height="248" :data="tableData" style="width: 100%">
+      <el-table border height="240" :data="tableData" style="width: 100%">
         <el-table-column prop="wipOrderNo" label="工单号" align="center" />
         <el-table-column
           prop="productAlias"

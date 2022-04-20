@@ -1,97 +1,122 @@
 <template>
   <div class="main-container">
-    <el-row class="line1" :gutter="20">
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="yjData1" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="yjData2" />
-        </div>
-      </el-col>
-      <el-col :span="12">
-        <div class="bgs">
-          <div class="title">日产数据</div>
-          <DailyChart chart-id="dailyChart" :chart-data="daysData" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="tsData" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="gtData" />
-        </div>
-      </el-col>
-    </el-row>
-    <el-row class="line1" :gutter="20">
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="yjData3" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="yjData4" />
-        </div>
+    <el-row :gutter="10" class="line">
+      <el-col :span="6">
+        <el-row :gutter="10">
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="yjData1" />
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="yjData2" />
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="10" class="line2">
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="yjData3" />
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="yjData4" />
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="10" class="line2">
+          <el-col>
+            <AgvTableList :table-data="agvTableData" />
+          </el-col>
+        </el-row>
       </el-col>
       <el-col :span="12">
-        <div class="bgs">
-          <div class="title">月产数据</div>
-          <MonthChart chart-id="monthChart" :chart-data="monthsData" />
-        </div>
+        <el-row>
+          <el-col>
+            <div class="bgs">
+              <div class="title">日产数据</div>
+              <DailyChart chart-id="dailyChart" :chart-data="daysData" />
+            </div>
+          </el-col>
+        </el-row>
+        <el-row class="line1">
+          <el-col>
+            <div class="bgs">
+              <div class="title">月产数据</div>
+              <MonthChart chart-id="monthChart" :chart-data="monthsData" />
+            </div>
+          </el-col>
+        </el-row>
+        <el-row class="line1">
+          <el-col>
+            <TableList :table-data="tableData" />
+          </el-col>
+        </el-row>
       </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="hsgData" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="bzData" />
-        </div>
-      </el-col>
-    </el-row>
-    <el-row class="line1" :gutter="20">
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="dgData" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="agvData" />
-        </div>
-      </el-col>
-      <el-col :span="12">
-        <div>
-          <TableList :table-data="tableData" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="zzData" />
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="bgs">
-          <CommonCard :infoData="syData" />
-        </div>
+      <el-col :span="6">
+        <el-row :gutter="10">
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="dgData" />
+            </div>
+          </el-col>
+          <el-col :span="12">
+             <div class="bgs">
+              <CommonCard :infoData="tsData" />
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="10" class="line2">
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="gtData" />
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="hsgData" />
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="10" class="line2">
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="bzData" />
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="zzData" />
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="10" class="line2">
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="syData1" />
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="bgs">
+              <CommonCard :infoData="syData2" />
+            </div>
+          </el-col>
+        </el-row>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { getDaysData1, getMonthsData1, getTable, getStatusOne } from "@/api/dashboard";
+import { getDaysData1, getMonthsData1, getTable, getStatusOne, getAgvTable } from "@/api/dashboard";
 import CommonCard from "@/components/CommonCard";
 import DailyChart from "@/components/DailyChart";
 import MonthChart from "@/components/MonthChart";
 import TableList from "@/components/TableList1";
+import AgvTableList from "@/components/AgvTableList";
+
 const dic = {
   早班OK: "okz",
   早班NG: "ngz",
@@ -109,6 +134,7 @@ export default {
     DailyChart,
     MonthChart,
     TableList,
+    AgvTableList
   },
   data() {
     return {
@@ -124,7 +150,10 @@ export default {
       yjData4: {
         imgSrc: require("@/assets/yj2.png"),
       },
-      syData: {
+      syData1: {
+        imgSrc: require("@/assets/syzz.png"),
+      },
+      syData2: {
         imgSrc: require("@/assets/syzz.png"),
       },
       dgData: {
@@ -145,10 +174,6 @@ export default {
       zzData: {
         imgSrc: require("@/assets/bz.png"),
       },
-      agvData: {
-        equipmentName: 'AGV叫料',
-        imgSrc: "",
-      },
       logData: {
         imgSrc: "",
       },
@@ -161,7 +186,8 @@ export default {
         xAxisData: [],
       },
       tableData: [],
-      equipmentNameList: []
+      equipmentNameList: [],
+      agvTableData: []
     };
   },
   mounted() {
@@ -178,6 +204,7 @@ export default {
       this.getDaysData();
       this.getMonthsData();
       this.getTable();
+      this.getAgvTable()
     },
     getStatusOne(){
       getStatusOne()
@@ -196,13 +223,13 @@ export default {
               this.yjData2 = { ...this.yjData2, ...objData['2']}
               this.yjData3 = { ...this.yjData3, ...objData['5']}
               this.yjData4 = { ...this.yjData4, ...objData['6']}
-              this.syData = { ...this.syData, ...objData['11']}
-              this.agvData = { ...this.agvData, ...objData['AGV叫料']}
-              this.dgData = { ...this.dgData, ...objData['9']}
-              this.hsgData = { ...this.hsgData, ...objData['7']}
-              this.gtData = { ...this.gtData, ...objData['4']}
-              this.tsData = { ...this.tsData, ...objData['3']}
-              this.bzData = { ...this.bzData, ...objData['8']}
+              this.syData1 = { ...this.syData1, ...objData['11']}
+              this.syData2 = { ...this.syData2, ...objData['12']}
+              this.dgData = { ...this.dgData, ...objData['3']}
+              this.hsgData = { ...this.hsgData, ...objData['8']}
+              this.gtData = { ...this.gtData, ...objData['7']}
+              this.tsData = { ...this.tsData, ...objData['4']}
+              this.bzData = { ...this.bzData, ...objData['9']}
               this.zzData = { ...this.zzData, ...objData['10']}
             }
           }
@@ -293,6 +320,18 @@ export default {
         .catch(() => {})
         .finally(() => {});
     },
+    // agvTable
+    getAgvTable() {
+      getAgvTable()
+        .then((res) => {
+          const { status, data } = res;
+          if (status === 200 && data.result) {
+            this.agvTableData = data.result.tabaleData;
+          }
+        })
+        .catch(() => {})
+        .finally(() => {});
+    },
   },
 };
 </script>
@@ -307,8 +346,14 @@ export default {
   background-size: 100% 100%;
   background-image: url("~@/assets/border.jpg");
 }
+.line {
+  padding: 10px;
+}
 .line1 {
-  margin: 20px 0;
+  margin-top: 20px;
+}
+.line2 {
+  margin-top: 30px;
 }
 .title {
   font-size: 14px;
