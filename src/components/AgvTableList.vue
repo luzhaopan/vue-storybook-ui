@@ -2,16 +2,12 @@
   <div class="pCard">
     <div class="title">AGV叫料</div>
     <div>
-      <el-table border height="350" :data="tableData" style="width: 100%">
+      <el-table border height="382" :data="tableData" style="width: 100%">
         <el-table-column prop="sourceNo" label="料点编号" align="center" />
-        <el-table-column
-          prop="sourceName"
-          label="料点名称"
-          align="center"
-        />
+        <el-table-column prop="sourceName" label="料点名称" align="center" />
         <el-table-column label="料点状态" align="center">
           <template slot-scope="scope">
-            <span :class="{red: statusFilter(scope.row.statusOk)}">
+            <span :class="{ red: statusFilter(scope.row.statusOk) }">
               {{ scope.row.statusOk }}
             </span>
           </template>
@@ -32,7 +28,7 @@ export default {
   },
   methods: {
     statusFilter(str) {
-      return str.indexOf('失败') > -1;
+      return str.indexOf("失败") > -1;
     },
   },
 };

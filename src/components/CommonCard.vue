@@ -1,6 +1,6 @@
 <template>
   <div class="infoCard">
-    <div class="title">{{ infoData.equipmentName }}</div>
+    <div class="title">{{ infoData.equipmentName || "暂无数据" }}</div>
     <div style="text-align: right; margin: 0px -4px -5px">
       <img class="img1" :src="getSrc(infoData.equipmentStatus)" alt="" />
     </div>
@@ -26,17 +26,17 @@ export default {
       src2: require("@/assets/bj2.png"),
       src3: require("@/assets/bj3.png"),
       connectDic: {
-        0: '关机',
-        1: '联机',
-        2: '联机',
-        3: '联机',
+        0: "关机",
+        1: "联机",
+        2: "联机",
+        3: "联机",
       },
       runDic: {
-        0: '关机',
-        1: '作业',
-        2: '待机',
-        3: '报警',
-      }
+        0: "关机",
+        1: "作业",
+        2: "待机",
+        3: "报警",
+      },
     };
   },
   methods: {
@@ -60,8 +60,9 @@ export default {
 .infoCard {
   position: relative;
   /* border: 1px solid #eee;*/
-  padding: 0 5px 25px;
+  padding: 0 5px 30px;
   /* text-align: center; */
+  height: 130px;
 }
 .title {
   margin-bottom: 5px;

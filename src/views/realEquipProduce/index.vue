@@ -63,7 +63,7 @@
             </div>
           </el-col>
           <el-col :span="12">
-             <div class="bgs">
+            <div class="bgs">
               <CommonCard :infoData="tsData" />
             </div>
           </el-col>
@@ -110,7 +110,13 @@
 </template>
 
 <script>
-import { getDaysData1, getMonthsData1, getTable, getStatusOne, getAgvTable } from "@/api/dashboard";
+import {
+  getDaysData1,
+  getMonthsData1,
+  getTable,
+  getStatusOne,
+  getAgvTable,
+} from "@/api/dashboard";
 import CommonCard from "@/components/CommonCard";
 import DailyChart from "@/components/DailyChart";
 import MonthChart from "@/components/MonthChart";
@@ -134,7 +140,7 @@ export default {
     DailyChart,
     MonthChart,
     TableList,
-    AgvTableList
+    AgvTableList,
   },
   data() {
     return {
@@ -187,7 +193,7 @@ export default {
       },
       tableData: [],
       equipmentNameList: [],
-      agvTableData: []
+      agvTableData: [],
     };
   },
   mounted() {
@@ -204,33 +210,33 @@ export default {
       this.getDaysData();
       this.getMonthsData();
       this.getTable();
-      this.getAgvTable()
+      this.getAgvTable();
     },
-    getStatusOne(){
+    getStatusOne() {
       getStatusOne()
         .then((res) => {
           const { status, data } = res;
           if (status === 200 && data.result) {
-             console.log(data.result)
+            console.log(data.result);
             if (data.result.equipmentTask.length) {
-              const { equipmentTask } = data.result
-              const objData = {}
-              equipmentTask.forEach(item => {
-                objData[item.sn] = item
-                this.equipmentNameList.push(item.equipmentName)
-              })
-              this.yjData1 = { ...this.yjData1, ...objData['1']}
-              this.yjData2 = { ...this.yjData2, ...objData['2']}
-              this.yjData3 = { ...this.yjData3, ...objData['5']}
-              this.yjData4 = { ...this.yjData4, ...objData['6']}
-              this.syData1 = { ...this.syData1, ...objData['11']}
-              this.syData2 = { ...this.syData2, ...objData['12']}
-              this.dgData = { ...this.dgData, ...objData['3']}
-              this.hsgData = { ...this.hsgData, ...objData['8']}
-              this.gtData = { ...this.gtData, ...objData['7']}
-              this.tsData = { ...this.tsData, ...objData['4']}
-              this.bzData = { ...this.bzData, ...objData['9']}
-              this.zzData = { ...this.zzData, ...objData['10']}
+              const { equipmentTask } = data.result;
+              const objData = {};
+              equipmentTask.forEach((item) => {
+                objData[item.sn] = item;
+                this.equipmentNameList.push(item.equipmentName);
+              });
+              this.yjData1 = { ...this.yjData1, ...objData["1"] };
+              this.yjData2 = { ...this.yjData2, ...objData["2"] };
+              this.yjData3 = { ...this.yjData3, ...objData["5"] };
+              this.yjData4 = { ...this.yjData4, ...objData["6"] };
+              this.syData1 = { ...this.syData1, ...objData["11"] };
+              this.syData2 = { ...this.syData2, ...objData["12"] };
+              this.dgData = { ...this.dgData, ...objData["3"] };
+              this.hsgData = { ...this.hsgData, ...objData["8"] };
+              this.gtData = { ...this.gtData, ...objData["7"] };
+              this.tsData = { ...this.tsData, ...objData["4"] };
+              this.bzData = { ...this.bzData, ...objData["9"] };
+              this.zzData = { ...this.zzData, ...objData["10"] };
             }
           }
         })
@@ -253,8 +259,7 @@ export default {
                   name: item,
                   type: "bar",
                   stack: "one",
-                  barMinWidth : 15,
-                  barMaxWidth : 20,
+                  barWidth: 10,
                   emphasis: {
                     focus: "series",
                   },
@@ -266,8 +271,7 @@ export default {
                   name: item,
                   type: "bar",
                   stack: "two",
-                  barMinWidth : 15,
-                  barMaxWidth : 20,
+                  barWidth: 10,
                   emphasis: {
                     focus: "series",
                   },
@@ -342,7 +346,7 @@ export default {
   width: 100%;
 }
 .bgs {
-  padding: 10px;
+  padding: 20px 10px;
   background-size: 100% 100%;
   background-image: url("~@/assets/border.jpg");
 }

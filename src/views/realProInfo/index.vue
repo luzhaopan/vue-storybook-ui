@@ -117,8 +117,7 @@ export default {
                     name: item,
                     type: "bar",
                     stack: "one",
-                    barMinWidth : 15,
-                    barMaxWidth : 20,
+                    barWidth: 10,
                     emphasis: {
                       focus: "series",
                     },
@@ -130,8 +129,9 @@ export default {
                     name: item,
                     type: "bar",
                     stack: "two",
-                    barMinWidth : 15,
-                    barMaxWidth : 20,
+                    barWidth: 10,
+                    // barMinWidth: 10,
+                    // barMaxWidth: 10,
                     emphasis: {
                       focus: "series",
                     },
@@ -150,8 +150,7 @@ export default {
                     name: item,
                     type: "bar",
                     stack: "one",
-                    barMinWidth : 15,
-                    barMaxWidth : 20,
+                    barWidth: 10,
                     emphasis: {
                       focus: "series",
                     },
@@ -163,8 +162,7 @@ export default {
                     name: item,
                     type: "bar",
                     stack: "two",
-                    barMinWidth : 15,
-                    barMaxWidth : 20,
+                    barWidth: 10,
                     emphasis: {
                       focus: "series",
                     },
