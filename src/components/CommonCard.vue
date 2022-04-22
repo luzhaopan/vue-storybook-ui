@@ -91,6 +91,6 @@ export default {
   height: 60px;
   position: absolute;
   right: -20px;
-  top: 125px;
+  top: 140px;
 }
 </style>
