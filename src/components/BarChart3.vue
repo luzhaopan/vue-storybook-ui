@@ -144,6 +144,12 @@ export default {
           containLabel: true,
         },
         xAxis: {
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: ["#3e3e3e"],
+            },
+          },
           min: function () {
             return min;
           },
@@ -181,6 +187,11 @@ export default {
           {
             name: "设备",
             data: yData,
+            axisLabel: {
+              textStyle: {
+                color: "#fff",
+              },
+            },
           },
           {
             position: "left",
@@ -195,11 +206,11 @@ export default {
             axisLabel: {
               interval: 0,
               inside: true,
-              // fontSize: 12,
+              fontSize: 10,
               // fontWeight: "bold",
               // color: "#080808",
               textStyle: {
-                color: "#080808",
+                color: "#fff",
                 verticalAlign: "bottom",
                 // align: "left",
                 padding: [10, 0, 10, 0],
