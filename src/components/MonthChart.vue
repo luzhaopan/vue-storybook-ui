@@ -85,7 +85,10 @@ export default {
         },
         legend: {
           // data: ["OK", "NG"],
-          left: "right",
+          right: "4%",
+          textStyle: {
+            color: "#fff"
+          }
         },
         grid: {
           top: "18%",
@@ -107,6 +110,12 @@ export default {
           {
             type: "value",
             name: "产量",
+            splitLine:{
+              show: true,
+              lineStyle:{
+                color: ['#6e7179']
+              }
+            },
             // min: 0,
             // max: 250,
             // interval: 50,

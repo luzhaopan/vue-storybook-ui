@@ -1,10 +1,9 @@
 <template>
   <div class="pCard">
     <div class="title">产品产量看板</div>
-    <div align="center"  >
-      
-       <el-table :cell-style="{borderColor:'#1e5c71', borderBottom: '2px solid #1e5c71'}" :header-cell-style="{color: '#ddd', borderBottom: '2px solid #1e5c71' }" height="265" :data="tableData" style="width: 100%">
-         <el-table-column prop="wipOrderNo" label="工单号" align="center" width="125px" />
+    <div>
+      <el-table :cell-style="{borderColor:'#1e5c71', borderBottom: '2px solid #1e5c71'}" :header-cell-style="{color: '#ddd', borderBottom: '2px solid #1e5c71' }" height="265" :data="tableData" style="width: 100%">
+        <el-table-column prop="wipOrderNo" label="工单号" align="center" width="125px" />
         <el-table-column
           prop="productAlias"
           label="成品简码"
@@ -47,29 +46,12 @@
 
 <script>
 export default {
-  name: "TableList",
+  name: "TableList2",
   props: {
     tableData: {
       type: Array,
       default: () => [],
     },
-  },
-  data() {
-    return {
-      // tableData: [
-      //   {
-      //      wipOrderNo: "34244", // 工单号
-      // productAlias: "W201B", // 成品简码
-      // quantity: "201B211341", // 物料号
-      // okValue: "5", // 开工时间
-      // ngValue: "55", // 完工时间
-      // serisNullValue: "85", // 总消耗
-      // scheduledStartDate: "2022-11-10 09:11", // 来料数量
-      // scheduledCompleteDate: "2022-11-10 09:11", // 完成数量
-      // cDiameter2: "56.33", // 订单状态
-      //   }
-      // ],
-    };
   },
   methods: {
     timeFilter(val) {
@@ -81,13 +63,9 @@ export default {
 
 <style scoped>
 .pCard {
-  /* position: relative; */
-  /* border: 1px solid #eee; */
-  padding: 24px;
+  padding: 24px 35px;
   background-size: 100% 100%;
-  /* background-repeat: no-repeat; */
   background-image: url("~@/assets/border5.jpg");
- 
 }
 .title {
   font-size: 14px;
@@ -117,6 +95,7 @@ export default {
 
 ::v-deep .el-table tr {
   background-color: transparent !important;
+  color: #ddd;
 }
 ::v-deep .el-table__body td,::v-deep .el-table__header th,
 .el-table .cell {

@@ -1,6 +1,6 @@
 <template>
   <div class="infoCard">
-    <div class="title">{{ infoData.equipmentName || "暂无数据" }}</div>
+    <div class="title"    >{{ infoData.equipmentName || "暂无数据" }}</div>
     <div style="text-align: right; margin: 0px -4px -5px">
       <img class="img1" :src="getSrc(infoData.equipmentStatus)" alt="" />
     </div>
@@ -68,18 +68,22 @@ export default {
   margin-bottom: 5px;
   font-size: 14px;
   font-weight: 600;
-  background-color: rgb(216, 237, 255);
+  
   text-align: center;
   padding: 5px 0;
+  /*
+   background-color: rgb(216, 237, 255);
   background: linear-gradient(-118deg, transparent 6px, #d8edff 0) right,
     linear-gradient(124deg, transparent 9px, #d8edff 0) left;
   background-size: 60% 100%;
   background-repeat: no-repeat;
+  */
 }
 .item {
   /* border-bottom: 1px solid #ddd; */
   font-size: 12px;
-  padding: 5px 0 2px;
+  padding: 5px 15px 2px;
+
   text-align: left;
 }
 .img1 {
@@ -90,7 +94,7 @@ export default {
   width: 100px;
   height: 60px;
   position: absolute;
-  right: -20px;
-  top: 140px;
+  left: 50px;
+  top: 125px;
 }
 </style>

@@ -1,7 +1,9 @@
-<template>
+﻿<template>
   <div class="main-container">
-    <Header title="活塞杆探伤集成岛TJHSGTS1X" />
+    <Header background-image="@/assets/logo2.png" title=" " />
+   
     <!-- <div @click="getValue">222</div> -->
+      <div style=" height:10px" > </div>
     <div class="menus">
       <div
         style="cursor: pointer"
@@ -68,13 +70,14 @@ export default {
       value: 1,
       type: '1',
       menu: [
-        {
-          id: 1,
-          name: "设备用时分析",
-        },
+   
         {
           id: 2,
           name: "生产实况看板",
+        },
+        {
+          id: 1,
+          name: "设备用时分析",
         },
         {
           id: 3,
@@ -102,7 +105,7 @@ export default {
 .main-container {
   /* padding: 10px; */
   width: 100%;
-  height: calc(100vh - 20px);
+  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
 }
@@ -111,22 +114,28 @@ export default {
   justify-content: flex-start;
   align-content: center;
   font-size: 14px;
-  background: #eaf4fd;
+ 
+
   div {
-    border-right: 1px solid #ccc;
+    border-right: 10px solid #04041a;
+    border:5px  ;
     padding: 4px 12px;
+    background-image: url("~@/assets/menu1.png");
+    background-size:100% 100%;
+    width:120px;
   }
   .checked {
-    color: #30a1fe;
+    color: #eeeeee;
     font-weight: 600;
   }
 }
 .contant {
-  border: 1px solid #66a7ff;
-  padding: 20px 10px;
+  border: 1px solid #071f34;
+  padding: 1px 1px;
   // height: 100%;
   flex: 1;
   overflow-y: auto;
+  
 }
 ::-webkit-scrollbar {
   width: 5px;

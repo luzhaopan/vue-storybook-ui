@@ -4,24 +4,24 @@
       <el-col :span="6">
         <el-row :gutter="10">
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="yjData1" />
             </div>
           </el-col>
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="yjData2" />
             </div>
           </el-col>
         </el-row>
         <el-row :gutter="10" class="line2">
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="yjData3" />
             </div>
           </el-col>
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="yjData4" />
             </div>
           </el-col>
@@ -36,7 +36,7 @@
         <el-row>
           <el-col>
             <div class="bgs">
-              <div class="title">日产数据</div>
+              <div class="title"><div style="padding: 0 25px 0 0;">日产数据</div></div>
               <DailyChart chart-id="dailyChart" :chart-data="daysData" />
             </div>
           </el-col>
@@ -44,7 +44,7 @@
         <el-row class="line1">
           <el-col>
             <div class="bgs">
-              <div class="title">月产数据</div>
+              <div class="title"><div style="padding: 0 25px 0 0;">月产数据</div></div>
               <MonthChart chart-id="monthChart" :chart-data="monthsData" />
             </div>
           </el-col>
@@ -58,48 +58,48 @@
       <el-col :span="6">
         <el-row :gutter="10">
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="dgData" />
             </div>
           </el-col>
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="tsData" />
             </div>
           </el-col>
         </el-row>
         <el-row :gutter="10" class="line2">
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="gtData" />
             </div>
           </el-col>
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="hsgData" />
             </div>
           </el-col>
         </el-row>
         <el-row :gutter="10" class="line2">
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="bzData" />
             </div>
           </el-col>
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="zzData" />
             </div>
           </el-col>
         </el-row>
         <el-row :gutter="10" class="line2">
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="syData1" />
             </div>
           </el-col>
           <el-col :span="12">
-            <div class="bgs">
+            <div class="bg4">
               <CommonCard :infoData="syData2" />
             </div>
           </el-col>
@@ -120,8 +120,9 @@ import {
 import CommonCard from "@/components/CommonCard";
 import DailyChart from "@/components/DailyChart";
 import MonthChart from "@/components/MonthChart";
-import TableList from "@/components/TableList1";
+import TableList from "@/components/TableList2";
 import AgvTableList from "@/components/AgvTableList";
+// import AgvTableList1 from "@/components/AgvTableList1";
 
 const dic = {
   早班OK: "okz",
@@ -348,26 +349,35 @@ export default {
 .bgs {
   padding: 20px 10px;
   background-size: 100% 100%;
-  background-image: url("~@/assets/border.jpg");
+  background-image: url("~@/assets/border3.jpg");
+}
+
+.bg4 {
+  padding: 20px 10px;
+  background-size: 100% 100%;
+  background-image: url("~@/assets/border4.png");
 }
 .line {
   padding: 10px;
 }
 .line1 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .line2 {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .title {
   font-size: 14px;
   font-weight: 600;
-  background-color: rgb(216, 237, 255);
+  font-color:#efefef;
+  
   text-align: center;
   padding: 5px 0;
+  /*  background-color: #efefef;  
   background: linear-gradient(-118deg, transparent 6px, #d8edff 0) right,
     linear-gradient(124deg, transparent 9px, #d8edff 0) left;
   background-size: 60% 100%;
   background-repeat: no-repeat;
+  */
 }
 </style>

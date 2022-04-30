@@ -93,7 +93,7 @@ export default {
   width: 100%;
 }
 .main {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #091421;
   padding: 10px 0;
   position: relative;
 }
@@ -107,7 +107,8 @@ export default {
   font-size: 13px;
 }
 .titles {
-  background: #f5f4f4;
+  background: #17465a;
+  color: #fff;
   font-size: 13px;
   padding: 10px 0;
 }
@@ -117,8 +118,8 @@ export default {
 }
 .list-item {
   flex: 1;
-  border-right: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-right: 2px solid #091421;
+  border-bottom: 2px solid #091421;
 }
 .eq-card {
   display: flex;
@@ -136,15 +137,16 @@ export default {
   justify-content: center;
   align-items: center;
   line-height: 20px;
-  background: #f4f6f7;
+  background: #044f74;
 }
 .taskNo {
   font-size: 14px;
   font-weight: 600;
+  color: #ddd;
 }
 .taskId {
   font-size: 12px;
-  color: rgb(143, 143, 143);
+  color: #ddd;
 }
 .card {
   display: flex;
@@ -165,6 +167,7 @@ export default {
 
 .time {
   font-size: 13px;
+  color: #ddd;
 }
 .active {
   background-color: #00cb51;

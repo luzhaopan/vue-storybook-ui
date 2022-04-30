@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <div>
-      <img class="img" src="@/assets/sany.png" alt="" />
+    <div align="center">
+  
     </div>
     <div class="title">{{ title }}</div>
   </div>
@@ -18,14 +18,17 @@ export default {
 
 <style scoped>
 .header {
+   background-image: url("~@/assets/logo2.png");
+    
+   background-size:100% 100%;
   position: relative;
-  padding: 10px 20px;
+  padding: 31px 0px;
 }
 .img {
-  width: 85px;
-  height: 20px;
-  position: absolute;
-  left: 10px;
+  width: 100%;
+  height: 60px;
+ /* position: absolute;*/
+  left: 0px;
 }
 .title {
   text-align: center;

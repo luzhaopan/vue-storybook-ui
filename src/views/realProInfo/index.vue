@@ -249,7 +249,7 @@ export default {
   .bgs {
     padding: 10px;
     background-size: 100% 100%;
-    background-image: url("~@/assets/border.jpg");
+    background-image: url("~@/assets/border3.jpg");
   }
   .line1 {
     margin: 20px 0;
@@ -257,14 +257,17 @@ export default {
   .title {
     font-size: 14px;
     font-weight: 600;
-    background-color: rgb(216, 237, 255);
+
     text-align: center;
     padding: 5px 0;
 
+    /*
+    background-color: rgb(216, 237, 255);
     background: linear-gradient(-118deg, transparent 6px, #d8edff 0) right,
       linear-gradient(124deg, transparent 9px, #d8edff 0) left;
     background-size: 60% 100%;
     background-repeat: no-repeat;
+    */
   }
 }
 </style>

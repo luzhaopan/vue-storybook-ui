@@ -144,11 +144,11 @@ export default {
           containLabel: true,
         },
         xAxis: {
-          splitLine: {
+          splitLine:{
             show: true,
-            lineStyle: {
-              color: ["#3e3e3e"],
-            },
+            lineStyle:{
+              color: ['#3e3e3e']
+            }
           },
           min: function () {
             return min;
@@ -189,7 +189,8 @@ export default {
             data: yData,
             axisLabel: {
               textStyle: {
-                color: "#fff",
+                color: "#ddd",
+                 fontSize: 15,
               },
             },
           },
@@ -206,11 +207,11 @@ export default {
             axisLabel: {
               interval: 0,
               inside: true,
-              fontSize: 10,
+              fontSize: 12,
               // fontWeight: "bold",
               // color: "#080808",
               textStyle: {
-                color: "#fff",
+                color: "#ddd",
                 verticalAlign: "bottom",
                 // align: "left",
                 padding: [10, 0, 10, 0],

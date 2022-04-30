@@ -25,7 +25,7 @@
         <div><Card /></div>
       </el-col>
     </el-row>
-    <el-row class="line1">
+    <el-row class="line2">
       <el-col><TableList /></el-col>
     </el-row>
   </div>
@@ -191,6 +191,8 @@ export default {
 .line1 {
   margin: 20px 0;
 }
+
+
 .title {
   font-size: 14px;
   font-weight: 600;
