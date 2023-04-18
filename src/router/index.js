@@ -9,8 +9,12 @@ import equipment from "../views/equipmentInfo";
 import production from "../views/productionInfo";
 
 const routes = [
-  { path: "", redirect: "equipment" },
-  //单个路由均为对象类型，path代表的是路径，component代表组件
+  {
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
+  { path: "/", redirect: "equipment" },
   {
     path: "/relationship",
     component: () => import("@/views/relationship/relationship.vue"),
