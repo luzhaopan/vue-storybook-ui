@@ -29,8 +29,38 @@ const routes = [
     children: [{
       path: 'relationship',
       name: 'Relationship',
-      component: () => import("@/views/relationship/relationship.vue"),
+      component: () => import("@/views/relationship/index"),
       meta: { title: 'Relationship'}
+    }]
+  },
+  {
+    path: "/anchor",
+    component: Layout,
+    children: [{
+      path: 'anchor',
+      name: 'Anchor',
+      component: () => import("@/views/anchor/index"),
+      meta: { title: 'Anchor'}
+    }]
+  },
+  {
+    path: "/wordCloud",
+    component: Layout,
+    children: [{
+      path: 'wordCloud',
+      name: 'WordCloud',
+      component: () => import("@/views/wordCloud/index"),
+      meta: { title: 'WordCloud'}
+    }]
+  },
+  {
+    path: "/ringCharts",
+    component: Layout,
+    children: [{
+      path: 'ring',
+      name: 'Ring',
+      component: () => import("@/views/ringCharts/index"),
+      meta: { title: 'Ring'}
     }]
   }
 ];
