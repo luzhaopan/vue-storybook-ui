@@ -5,38 +5,10 @@
 </template>
 
 <script>
-import { getDataStats } from "@/api/dashboard";
 export default {
   name: "App",
   mounted() {
     console.log("env", process.env.VUE_APP_BASE_API);
-    this.getDataStats();
-  },
-  methods: {
-    getDataStats() {
-      getDataStats({
-        channel: 0,
-        customer_year: 0,
-      })
-        .then((res) => {
-          if (res.code === 200) {
-            console.log(res);
-          }
-        })
-        .catch(() => {})
-        .finally(() => {});
-    },
-  },
+  }
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 20px;
-}
-</style>
