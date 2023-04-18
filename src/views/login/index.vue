@@ -34,7 +34,7 @@
 </template>
 
 <script>
-
+import { setToken } from '@/utils/auth'
 export default {
   name: 'Login',
   data() {
@@ -88,13 +88,8 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          // this.loading = true
-          // this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
-            // this.loading = false
-          // }).catch(() => {
-          //   this.loading = false
-          // })
+          setToken('tokenKey')
+          this.$router.push({ path: this.redirect || '/' })
         } else {
           console.log('error submit!!')
           return false
