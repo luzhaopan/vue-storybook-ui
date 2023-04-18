@@ -1,5 +1,3 @@
-# vue-storybook
-
 ## Project setup
 
 ```
@@ -23,7 +21,13 @@ yarn build
 ```
 yarn lint
 ```
+# Component Collection
 
+Collect some customized components
+
+# vue-storybook
+
+show components by storybook
 ## Add storybook
 
 cd project_name

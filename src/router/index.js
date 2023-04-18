@@ -20,7 +20,7 @@ const routes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: 'Dashboard', icon: 'el-icon-s-home' }
     }]
   },
   {
@@ -30,7 +30,7 @@ const routes = [
       path: 'relationship',
       name: 'Relationship',
       component: () => import("@/views/relationship/relationship.vue"),
-      meta: { title: 'Relationship', icon: 'relationship' }
+      meta: { title: 'Relationship'}
     }]
   }
 ];
