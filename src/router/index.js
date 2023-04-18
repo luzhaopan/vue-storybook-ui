@@ -4,9 +4,7 @@ import Router from "vue-router";
 Vue.use(Router);
 
 /* Layout */
-// import Layout from "../App.vue";
-import equipment from "../views/equipmentInfo";
-import production from "../views/productionInfo";
+import Layout from '@/layout'
 
 const routes = [
   {
@@ -14,13 +12,27 @@ const routes = [
     component: () => import('@/views/login/index'),
     hidden: true
   },
-  { path: "/", redirect: "equipment" },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [{
+      path: 'dashboard',
+      name: 'Dashboard',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: 'Dashboard', icon: 'dashboard' }
+    }]
+  },
   {
     path: "/relationship",
-    component: () => import("@/views/relationship/relationship.vue"),
-  },
-  { path: "/equipment", component: equipment },
-  { path: "/production", component: production },
+    component: Layout,
+    children: [{
+      path: 'relationship',
+      name: 'Relationship',
+      component: () => import("@/views/relationship/relationship.vue"),
+      meta: { title: 'Relationship', icon: 'relationship' }
+    }]
+  }
 ];
 
 //实例化VueRouter并将routes添加进去
